@@ -36,3 +36,19 @@ final class Vehicle_AngularVelocity: Object, ObjectSchema {
    */
    var yaw = Field<Int?, NoArguments>("yaw")
 }
+
+public class AngularVelocity: Model {
+
+    typealias PartialType = Vehicle_AngularVelocity
+
+    public let pitch: Int?
+    public let roll: Int?
+    public let yaw: Int?
+
+
+    required init?(partial: Partial<PartialType?>) {
+        pitch = partial.pitch ?? nil
+        roll = partial.roll ?? nil
+        yaw = partial.yaw ?? nil
+    }
+}

@@ -109,7 +109,7 @@ public func executeRequest() {
         case .success(let response):
             print("SUCCESS:", response)
 
-
+            
         }
 
         semaphore.signal()

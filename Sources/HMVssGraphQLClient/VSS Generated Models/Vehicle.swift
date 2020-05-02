@@ -72,7 +72,23 @@ import Artemis
    }
 */
 
-public final class Vehicle: Object, ObjectSchema {
+
+public class _Vehicle: Model {
+
+    typealias PartialType = Vehicle
+
+    public let acceleration: Acceleration?
+    public let angularVelocity: AngularVelocity?
+
+
+    required init?(partial: Partial<Vehicle?>) {
+        acceleration = Acceleration(partial: partial.acceleration)
+        angularVelocity = AngularVelocity(partial: partial.angularVelocity)
+    }
+}
+
+
+final class Vehicle: Object, ObjectSchema {
     
     var adas = Field<Vehicle_ADAS?, NoArguments>("adas")
     
@@ -161,9 +177,4 @@ public final class Vehicle: Object, ObjectSchema {
     var tripMeterReading = Field<Float?, NoArguments>("tripMeterReading")
     
     var vehicleIdentification = Field<Vehicle_VehicleIdentification?, NoArguments>("vehicleIdentification")
-
-
-    public init() {
-        
-    }
 }

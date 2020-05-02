@@ -43,20 +43,32 @@ protocol Model {
 
     associatedtype PartialType: SelectionOutput
 
-    init(partial: Partial<PartialType>)
+    init?(partial: Partial<PartialType?>?)
+    init?(partial: Partial<PartialType?>)
 }
 
-public class VehicleAcceleration: Model {
+extension Model {
+
+    init?(partial: Partial<PartialType?>?) {
+        guard let partial = partial else {
+            return nil
+        }
+
+        self.init(partial: partial)
+    }
+}
+
+
+public class Acceleration: Model {
 
     typealias PartialType = Vehicle_Acceleration
-
 
     public let lateral: Float?
     public let longitudinal: Float?
     public let vertical: Float?
 
 
-    required init(partial: Partial<PartialType>) {
+    required init?(partial: Partial<PartialType?>) {
         lateral = partial.lateral ?? nil
         longitudinal = partial.longitudinal ?? nil
         vertical = partial.vertical ?? nil
