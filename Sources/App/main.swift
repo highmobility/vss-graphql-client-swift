@@ -6,123 +6,46 @@
 //
 
 import Foundation
-//import HMVssGraphQLClient
+import HMVssGraphQLClient
 import Combine
 
 
 let url = URL(string: "http://localhost:4000")!
+let client = HMVssGraphQLClient(url: url)
+let semaphore = DispatchSemaphore(value: 0)
 
 
-
-
-print("tere\n")
-
-
-//HMVssGraphQLClient.executeRequest()
-
-//let client = HMVssGraphQLClient(url: url)
-
-@available(OSX 10.15, *)
-class ASD {
-
-    private var cancellables: [AnyCancellable] = []
-
-
-    typealias Reducor3 = (isNextLineDoc: Bool, types: [GraphType])
-
-
-    func asddasd() throws {
-        let filePath = "/Users/mikk/Desktop/Workspace.nosync/Source/hm-vss-graphql-client-swift/Sources/HMVssGraphQLClient/vehicle.ts"
-        let schema = try String(contentsOfFile: filePath)
-
-        let lines = schema
-            .split(separator: "\n")
-            .map { line in
-                line.trimmingCharacters(in: .whitespacesAndNewlines)
-            }
-            .filter { line in   // Just skip comment lines
-                !line.hasPrefix("#")
-            }
-
-        let aa = schema
-            .split(separator: "\n")
-            .publisher
-            .map { line in
-                line.trimmingCharacters(in: .whitespacesAndNewlines)
-            }
-            .filter { line in   // Just skip comment lines
-                !line.hasPrefix("#")
-            }
-            .collect()
-        .map
-//            .reduce(Reducor3(false, [])) { result, line in
-//                // Starts-ends the docs
-//                if line == "\"\"\"" {
-//                    return (!result.isNextLineDoc, result.types)
-//                }
+//client.executeRequest {
+//    switch $0 {
+//    case .failure(let error):
+//        print("FAILurE:", error)
 //
-//                // Continue with docs
-//                if result.isNextLineDoc {
-//                    let type: GraphType
+//    case .success(let vehicle):
+//        print("SUCCESS:", vehicle)
+//    }
 //
-//                    if let last = result.types.last {
-//                        type = last
-//                        type.doc += line
-//                    }
-//                    else {
-//                        type = GraphType(doc: line, content: "")
-//                    }
+//    semaphore.signal()
+//}
 //
-//                    return (result.isNextLineDoc, result.types.dropLast() + [type])
-//                }
-//                // Start with type
-//                else if line.hasPrefix("type") && line.hasSuffix("{") {
-//                    let type: GraphType
-//
-//                    if let last = result.types.last, last.content == "" {
-//                        type = last
-//                    }
-//                    else {
-//                        type = GraphType(doc: "", content: line)
-//                    }
-//
-//                    return (result.isNextLineDoc, result.types.dropLast() + [type])
-//                }
-//                else if line.hasPrefix("enum") && line.hasSuffix("{") {
-//                    fatalError()
-//                }
-//                else {
-//                    guard let type = result.types.last else {
-//                        return result
-//                    }
-//
-//                      // add line to entity
-//                }
-//
-//
-//                return (result.isNextLineDoc, [])
-//            }
+//semaphore.wait()
 
 
-        print(lines[..<20].joined(separator: "\n"))
-
-//        Just(try String(contentsOfFile: filePath)).map { schema in
-////            schema.
-//        }
-    }
-}
-
-struct GraphType {
-
-    var doc: String
-    var content: String
-}
-
+//run()
 
 
 if #available(OSX 10.15, *) {
-    let asd = ASD()
-    try? asd.asddasd()
+    guard let inputFileIndex = CommandLine.arguments.firstIndex(where: { $0.hasPrefix("-i") || $0.hasPrefix("--input") }),
+        let outputFileIndex = CommandLine.arguments.firstIndex(where: { $0.hasPrefix("-o") || $0.hasPrefix("--output") }) else {
+            fatalError("No path to the schema file was specified")
+    }
+
+    let inputFileURL = URL(fileURLWithPath: CommandLine.arguments[inputFileIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines))
+    let outputFolderURL = URL(fileURLWithPath: CommandLine.arguments[outputFileIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines))
+    let generator = try! FilesGenerator(graphQLSpecFileURL: inputFileURL, outputFolderURL: outputFolderURL)
+
+    RunLoop.main.run()
 }
+
+
 
 print("\nläbi")

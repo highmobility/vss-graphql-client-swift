@@ -15,10 +15,12 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
 //        .package(url: "https://github.com/doofyus/Artemis.git", .branch("master")),
-        .package(path: "/Users/mikk/Desktop/Workspace.nosync/Source/Artemis/")
+        .package(path: "/Users/mikk/Desktop/Workspace.nosync/Source/Artemis/"),
 //        .package(url: "https://github.com/nerdsupremacist/Graphaello.git", .branch("master")),
 //        .package(url: "https://github.com/remind101/AutoGraph", .branch("master")),
-//        .package(url: "https://github.com/NicholasBellucci/SociableWeaver.git", .branch("master"))
+//        .package(url: "https://github.com/NicholasBellucci/SociableWeaver.git", .branch("master")),
+//        .package(path: "/Users/mikk/Desktop/SociableWeaver/")
+//        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.0.1"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -26,14 +28,15 @@ let package = Package(
         .target(name: "HMVssGraphQLClient",
                 dependencies: [
                     "Artemis",
-//                    "SociableWeaver"
+//                    "SociableWeaver",
+//                    "ArgumentParser",
                 ]
         ),
         .target(name: "App",
                 dependencies: [
                     "HMVssGraphQLClient",
                     "Artemis",
-//                    "SociableWeaver"
+//                    "SociableWeaver",
                 ]
         ),
         .testTarget(

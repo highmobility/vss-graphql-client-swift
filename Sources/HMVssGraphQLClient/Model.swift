@@ -11,7 +11,7 @@ import Foundation
 
 protocol Model {
 
-    associatedtype PartialType: SelectionOutput
+    associatedtype PartialType: Object
 
     init?(partial: Partial<PartialType?>?)
     init?(partial: Partial<PartialType?>)
