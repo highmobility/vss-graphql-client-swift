@@ -1,3 +1,6 @@
+Sources/Client/Models/*
+
+
 .DS_Store
 /.build
 /Packages
