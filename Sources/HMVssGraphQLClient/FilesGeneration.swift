@@ -13,7 +13,7 @@ import Foundation
 @available(OSX 10.15, *)
 public class FilesGenerator {
 
-    @Published private var _entities: [_Entity] = []
+    @Published private var entities: [_Entity] = []
     @Published private var filesContent: [String] = []
 
     private var cancellables: [AnyCancellable] = []
@@ -24,30 +24,36 @@ public class FilesGenerator {
         let lines = content.split(separator: "\n")
         let linesGroupedByEntity: [[String]] = getLinesGroupedByEntity(in: lines)
 
-        try _createEntities(fromGroupedLines: linesGroupedByEntity)
-        createFilesContent()
-        createSwiftFiles(outputFolder: outputFolder)
-        createExit()
+        let entitiesPub = try _createEntities(fromGroupedLines: linesGroupedByEntity)
+        let contentsPub = createFilesContent(from: entitiesPub)
+        let writesPub = try createSwiftFiles(from: contentsPub, entitiesPub: entitiesPub, outputFolder: outputFolder)
+
+        writesPub.sink(receiveCompletion: {
+            print("* completion:", $0)
+            exit(EXIT_SUCCESS)
+
+        }, receiveValue: { success, typeName in
+            print("* val:", (success, typeName))
+
+            if !success {
+                fatalError("Failed to save \(typeName).swift to \(outputFolder.path)")
+            }
+        })
+        .store(in: &cancellables)
     }
 }
 
 @available(OSX 10.15, *)
 private extension FilesGenerator {
 
-    func _createEntities(fromGroupedLines groupedLines: [[String]]) throws {
+    func _createEntities(fromGroupedLines groupedLines: [[String]]) throws -> AnyPublisher<_Entity, Never> {
         try createEntities(fromGroupedLines: groupedLines)
             .publisher
-            .share()
-            .collect()
-            .assign(to: \._entities, on: self)
-            .store(in: &cancellables)
+            .eraseToAnyPublisher()
     }
 
-    func createFilesContent() {
-        $_entities
-            .flatMap {
-                $0.publisher
-            }
+    func createFilesContent(from entitiesPub: AnyPublisher<_Entity, Never>) -> AnyPublisher<String, Never> {
+        entitiesPub
             .flatMap { entity -> AnyPublisher<[String], Never> in
                 switch entity.entityType {
                 case .enum:         return self.createSwiftLinesPub(forEnum: entity)
@@ -66,41 +72,31 @@ private extension FilesGenerator {
                 import Artemis
                 import Foundation
 
+
                 \(content)
                 """
             }
-            .collect()
-            .assign(to: \.filesContent, on: self)
-            .store(in: &cancellables)
+            .eraseToAnyPublisher()
     }
 
-    func createExit() {
-        $filesContent
-            .sink(receiveCompletion: {
-                print("completed:", $0)
-                exit(EXIT_SUCCESS)
+    func createSwiftFiles(from contentsPub: AnyPublisher<String, Never>,
+                          entitiesPub: AnyPublisher<_Entity, Never>,
+                          outputFolder: URL) throws -> AnyPublisher<(Bool, String), Never> {
 
-            }) { _ in }
-            .store(in: &cancellables)
-    }
+        let typeNamesPub = entitiesPub.map { $0.name.convertedToValidTypeName }.eraseToAnyPublisher()
+        let urlsPub = typeNamesPub.map { outputFolder.appendingPathComponent($0).appendingPathExtension("swift") }.eraseToAnyPublisher()
 
-    func createSwiftFiles(outputFolder: URL) {
-        $filesContent
-            .tryMap { contents -> [String] in
-                try FileManager.default.removeItem(at: outputFolder)
-                try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true)
+        // Clean the output folder
+        if FileManager.default.fileExists(atPath: outputFolder.path) {
+            try FileManager.default.removeItem(at: outputFolder)
+        }
 
-                return contents
-            }
-            .breakpointOnError()
-            .assertNoFailure()
-            .zip($_entities)
-            .flatMap { contents, entities in
-                Publishers.Zip(contents.publisher,
-                               entities.publisher.map { $0.name.convertedToValidTypeName })
-            }
-            .map { content, typeName -> (String, String) in
-                ("""
+        try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true)
+
+        // Add a header and save the file
+        return contentsPub
+            .zip(typeNamesPub) { content, typeName -> String in
+                """
                 //
                 //  \(typeName).swift
                 //  HMVssGraphQLClient
@@ -110,77 +106,24 @@ private extension FilesGenerator {
                 //
 
                 \(content)
-                """, typeName)
-            }
-            .sink { content, typeName in
-                let url = outputFolder
-                    .appendingPathComponent(typeName)
-                    .appendingPathExtension("swift")
-
-                do {
-                    try content
-                        .data(using: .utf8)?
-                        .write(to: url)
-                }
-                catch {
-                    fatalError("Failed to write a file: \(typeName), error: \(error)")
-                }
-            }
-            .store(in: &cancellables)
-    }
-
-
-    func createSwiftLinesPub(forInterface entity: _Entity) -> AnyPublisher<[String], Never> {
-        guard entity.entityType == .interface else {
-            fatalError()
-        }
-
-        let ivarLines = entity.fields
-            .publisher
-            .share()
-            .flatMap { field -> AnyPublisher<(String, String), Never> in
-                let fieldType = field.type.convertedToValidTypeName
-                let propertyName = self.getValidPropertyName(forName: field.name)
-                let argTypeName = field.arguments.isEmpty ? "NoArguments" : (field.name + "Arguments").convertedToValidTypeName
-                var ivarArgLines = ["var \(propertyName) = Field<\(fieldType), \(argTypeName)>(\"\(field.name)\")"]
-
-                if field.arguments.count > 0 {
-                    ivarArgLines += self.createArgumentsStruct(forField: field, name: argTypeName)
-                }
-
-                return field.documentationLinesPub
-                    .share()
-                    .collect()
-                    .map {
-                        $0.joinedWithNewLine()
-                    }
-                    .zip(ivarArgLines
-                        .publisher
-                        .collect()
-                        .map {
-                            $0.joinedWithNewLine()
-                        }
-                    )
-                    .eraseToAnyPublisher()
-            }
-            .map { docLines, ivarArgLines in
-                docLines.isEmpty ?
-                    ivarArgLines :
-                    docLines + "\n" + ivarArgLines
+                """
             }
             .map {
-                "\n" + $0.indented(byLevel: 1)
+                Data($0.utf8)
             }
+            .zip(urlsPub)
+            .tryMap { data, url in
+                try data.write(to: url)
 
-        return entity.documentationLinesPub
-            .share()
-            .append("public class \(entity.name.convertedToValidTypeName): Interface {")
-            .append(ivarLines)
-            .append(.publicRequiredInit)
-            .collect()
+                return true
+            }
+            .replaceError(with: false)
+            .zip(typeNamesPub)
             .eraseToAnyPublisher()
     }
 
+
+    // MARK: SwiftLinesGenerator
 
     func createSwiftLinesPub(forEnum entity: _Entity) -> AnyPublisher<[String], Never> {
         guard entity.entityType == .enum else {
@@ -258,6 +201,57 @@ private extension FilesGenerator {
         return entity.documentationLinesPub
             .share()
             .append("public class \(entity.name.convertedToValidTypeName): Input, ObjectSchema {")
+            .append(ivarLines)
+            .append(.publicRequiredInit)
+            .collect()
+            .eraseToAnyPublisher()
+    }
+
+    func createSwiftLinesPub(forInterface entity: _Entity) -> AnyPublisher<[String], Never> {
+        guard entity.entityType == .interface else {
+            fatalError()
+        }
+
+        let ivarLines = entity.fields
+            .publisher
+            .share()
+            .flatMap { field -> AnyPublisher<(String, String), Never> in
+                let fieldType = field.type.convertedToValidTypeName
+                let propertyName = self.getValidPropertyName(forName: field.name)
+                let argTypeName = field.arguments.isEmpty ? "NoArguments" : (field.name + "Arguments").convertedToValidTypeName
+                var ivarArgLines = ["var \(propertyName) = Field<\(fieldType), \(argTypeName)>(\"\(field.name)\")"]
+
+                if field.arguments.count > 0 {
+                    ivarArgLines += self.createArgumentsStruct(forField: field, name: argTypeName)
+                }
+
+                return field.documentationLinesPub
+                    .share()
+                    .collect()
+                    .map {
+                        $0.joinedWithNewLine()
+                }
+                .zip(ivarArgLines
+                .publisher
+                .collect()
+                .map {
+                    $0.joinedWithNewLine()
+                    }
+                )
+                    .eraseToAnyPublisher()
+        }
+        .map { docLines, ivarArgLines in
+            docLines.isEmpty ?
+                ivarArgLines :
+                docLines + "\n" + ivarArgLines
+        }
+        .map {
+            "\n" + $0.indented(byLevel: 1)
+        }
+
+        return entity.documentationLinesPub
+            .share()
+            .append("public class \(entity.name.convertedToValidTypeName): Interface {")
             .append(ivarLines)
             .append(.publicRequiredInit)
             .collect()

@@ -48,7 +48,14 @@ extension String {
 
     func replacingOccurrences<T>(of targets: [T], with replacement: String = "", options: CompareOptions = [], range searchRange: Range<Index>? = nil) -> String where T: StringProtocol {
         targets.reduce(self) {
-            $0.replacingOccurrences(of: $1, with: replacement, options: options, range: searchRange)
+            if $0 == "_" &&
+                $0.count > 1
+                && $0[$0.startIndex] == "_"
+                && $0[$0.index(after: $0.startIndex)].isNumber {
+                    return $0
+            }
+
+            return $0.replacingOccurrences(of: $1, with: replacement, options: options, range: searchRange)
         }
     }
 
@@ -65,14 +72,22 @@ extension String {
         var otherWords = split(separator: "_")
 
         guard otherWords.count >= 2 else {
-            return trimmingCharacters(in: CharacterSet(charactersIn: "_"))
+            let trimmedWord = trimmingCharacters(in: CharacterSet(charactersIn: "_"))
+            let digits = trimmedWord.prefix { $0.isNumber }
+
+            guard let number = Int(digits) else {
+                return trimmedWord
+            }
+
+            var numberWords = number.asWord.components(separatedBy: CharacterSet.letters.inverted)
+
+            return numberWords.removeFirst() +
+                numberWords.joined(separator: " ").capitalized.replacingOccurrences(of: [" "]) +
+                trimmedWord.suffix(trimmedWord.count - digits.count)
         }
 
         return otherWords.removeFirst() +
-            otherWords.map {
-                $0.first!.uppercased() +
-                $0.dropFirst()
-            }.joined()
+            otherWords.joined(separator: " ").capitalized.replacingOccurrences(of: [" "])
     }
 
     static var publicRequiredInit: String {
@@ -175,5 +190,17 @@ private extension String {
     func kebabCased() -> String {
         guard let words = self.capitalizedWords else { return "" }
         return words.map { $0.lowercased() }.joined(separator: "-")
+    }
+}
+
+
+private extension Int {
+
+    var asWord: String {
+        let formatter = NumberFormatter()
+
+        formatter.numberStyle = .spellOut
+
+        return formatter.string(from: .init(value: self))!
     }
 }

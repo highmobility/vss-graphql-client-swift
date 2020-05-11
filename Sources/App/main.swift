@@ -41,7 +41,14 @@ if #available(OSX 10.15, *) {
 
     let inputFileURL = URL(fileURLWithPath: CommandLine.arguments[inputFileIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines))
     let outputFolderURL = URL(fileURLWithPath: CommandLine.arguments[outputFileIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines))
-    let generator = try! FilesGenerator(graphQLSpecFileURL: inputFileURL, outputFolderURL: outputFolderURL)
+
+    do {
+        try FilesGenerator(graphQLSpecFileURL: inputFileURL, outputFolderURL: outputFolderURL)
+    }
+    catch {
+        fatalError("\(error)")
+    }
+
 
     RunLoop.main.run()
 }
