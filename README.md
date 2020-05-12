@@ -21,7 +21,9 @@ Both approaches require 2 arguments as input
 To run the generator from terminal, please follow the steps:
 
 1. navigate to the directory of the executable
-2. execute `{executable_path} -i {vss_spec_file_path} -o {models_output_folder_path}`
+2. execute `{executable_path}` with 2 arguments
+    - _schema path_ path as `-i {vss_spec_file_path}`  
+    - _output folder_ path as `-o {models_output_folder_path}`
 
 
 #### Xcode
@@ -33,7 +35,7 @@ To run the generator from Xcode, there are 2 options, either:
 3. choose `CodeGenerator` as the target
 4. navigate to `Run > Arguments`
 5. add the 2 required arguments
-    -  _schema file_ path as `-i {vss_spec_file_path}`
+    -  _schema file_ path as `-i {vss_schema_file_path}`
     - _output folder_ path as `-o {models_output_folder_path}`
 
 Or:  
