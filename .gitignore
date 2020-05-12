@@ -1,4 +1,4 @@
-Sources/Client/Models/*
+Sources/Client/Models/*.swift
 
 
 .DS_Store

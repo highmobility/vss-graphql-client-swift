@@ -17,3 +17,15 @@ class IntermediateField: DocsGeneratable {
     var documentation: [String] = []
     var arguments: [IntermediateArgument] = []
 }
+
+@available(OSX 10.15, *)
+extension IntermediateField {
+
+    var argumentsTypeName: String {
+        guard !arguments.isEmpty else {
+            return "NoArguments"
+        }
+
+        return "\(name)Arguments".convertedToValidTypeName
+    }
+}

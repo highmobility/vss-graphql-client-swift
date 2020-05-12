@@ -1,8 +1,15 @@
 //
-//  File.swift
+//  TODOs
 //  
 //
 //  Created by Mikk Rätsep on 11.05.20.
 //
 
-import Foundation
+/*
+
+ 1. remove .share() from suitable publishers
+
+
+
+
+ */

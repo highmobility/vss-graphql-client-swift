@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum IntermediateEntityType: String {
+enum IntermediateEntityType: String, CaseIterable {
     
     case object = "type"
     case input = "input"

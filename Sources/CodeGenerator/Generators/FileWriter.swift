@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FileWriter.swift
 //  
 //
 //  Created by Mikk Rätsep on 11.05.20.
@@ -12,16 +12,23 @@ import Foundation
 @available(macOS 10.15, *)
 struct FileWriter {
 
-    static func cleanOutputFolder(_ outputFolder: URL) throws {
+    let fileWritesPub: AnyPublisher<(Bool, OutputFile), Never>
+
+
+    init(with filesPub: AnyPublisher<OutputFile, Never>) throws {
+        print("- cleaning previous \(outputFolder.lastPathComponent) folder...")
+
+        // Clean the output folder first
         if FileManager.default.fileExists(atPath: outputFolder.path) {
             try FileManager.default.removeItem(at: outputFolder)
         }
 
         try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true)
-    }
 
-    static func writePublisher(with filesPub: AnyPublisher<OutputFile, Never>) -> AnyPublisher<(Bool, OutputFile), Never> {
-        filesPub
+        print("- converting to data and saving files...")
+
+        // Write the files and output success
+        fileWritesPub = filesPub
             .map {
                 Data($0.content.utf8)
             }
