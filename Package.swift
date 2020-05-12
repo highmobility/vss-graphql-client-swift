@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(path: "/Users/mikk/Desktop/Workspace.nosync/Source/Artemis/"),
+        .package(path: "https://github.com/Saelyria/Artemis"),
 //        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.0.1"),
     ],
     targets: [

@@ -10,12 +10,13 @@ import Foundation
 
 
 // Change the URL to a valid endpoint,
-// or run VSS data server from https://github.com/GENIVI/vss-graphql
+// or run "VSS data server" from https://github.com/GENIVI/vss-graphql
 let url = URL(string: "http://localhost:4000")!
 let client = VSSGraphQLClient(url: url)
 
-// Create a query to fetch specific values (branches must end with a scalar)
-let op = Operation(.query, name: "xxxx") {
+// Create a query to fetch specific values (branches must end with a scalar),
+// "getting started guide" can be found at https://github.com/Saelyria/Artemis/blob/master/GettingStarted.md
+let op = Operation(.query, name: "demo_query_123") {
     Add<VehicleQuery, Field<Vehicle, NoArguments>>(\.vehicle) {
         Add<Vehicle, Field<VehicleIdentification?, NoArguments>>(\.vehicleIdentification) {
             Add(\.brand)
@@ -52,8 +53,8 @@ client.execute(operation: op) { result in
     case .success(let partialVehicle):
         print("SUCCESS:", partialVehicle)
 
-        print("brand:", (partialVehicle.vehicleIdentification?.brand ?? nil))
-        print("isMoving:", (partialVehicle.isMoving ?? nil))
+        print("brand:", (partialVehicle.vehicleIdentification?.brand ?? nil) as Any)
+        print("isMoving:", (partialVehicle.isMoving ?? nil) as Any)
 
         if let model = partialVehicle.vehicleIdentification?.model ?? nil {
             print("model:", model)
