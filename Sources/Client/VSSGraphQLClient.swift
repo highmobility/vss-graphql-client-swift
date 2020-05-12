@@ -15,7 +15,7 @@ public class VSSGraphQLClient {
 
 
     public func execute(operation: Operation, completion: @escaping (Result<Partial<Vehicle>, GraphQLError>) -> Void) {
-        let client = Client<VehicleQuery>(endpoint: url)
+         let client = Client<VehicleQuery>(endpoint: url)
 
         client.perform(operation) { result in
             switch result {
