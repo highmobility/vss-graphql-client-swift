@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(path: "https://github.com/Saelyria/Artemis"),
+        .package(url: "https://github.com/Saelyria/Artemis", .branch("master")),
 //        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.0.1"),
     ],
     targets: [
@@ -34,7 +34,7 @@ let package = Package(
         ),
         .target(name: "Demo",
                 dependencies: [
-                    "Client"
+                    "Client",
                 ]
         ),
         .testTarget(
