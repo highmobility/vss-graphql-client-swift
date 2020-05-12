@@ -495,6 +495,8 @@
 		20671EFE246B0AF900435003 /* CabinSeatRow4Pos4SwitchSideBolster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671D18246B0AF800435003 /* CabinSeatRow4Pos4SwitchSideBolster.swift */; };
 		20671EFF246B0AF900435003 /* CabinSeatRow2Pos1SideBolster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671D19246B0AF800435003 /* CabinSeatRow2Pos1SideBolster.swift */; };
 		20671F01246B3B0A00435003 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F00246B3B0A00435003 /* Acceleration.swift */; };
+		20671F03246B42E600435003 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F02246B42E600435003 /* CodeGenerator.swift */; };
+		20671F05246B439500435003 /* CommandLine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F04246B439500435003 /* CommandLine+Extensions.swift */; };
 		OBJ_1071 /* VehicleQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_497 /* VehicleQuery.swift */; };
 		OBJ_1092 /* GenField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_501 /* GenField+Extensions.swift */; };
 		OBJ_1093 /* String+Converted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_502 /* String+Converted.swift */; };
@@ -504,7 +506,7 @@
 		OBJ_1097 /* FilesContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_507 /* FilesContentGenerator.swift */; };
 		OBJ_1098 /* GenEntitiesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_508 /* GenEntitiesGenerator.swift */; };
 		OBJ_1099 /* OutputFilesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_509 /* OutputFilesGenerator.swift */; };
-		OBJ_1100 /* CaseStyleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_511 /* CaseStyleOption.swift */; };
+		OBJ_1100 /* CaseStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_511 /* CaseStyle.swift */; };
 		OBJ_1101 /* GenArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_513 /* GenArgument.swift */; };
 		OBJ_1102 /* GenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_514 /* GenEntity.swift */; };
 		OBJ_1103 /* GenEntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_515 /* GenEntityType.swift */; };
@@ -1015,6 +1017,8 @@
 		20671D18246B0AF800435003 /* CabinSeatRow4Pos4SwitchSideBolster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow4Pos4SwitchSideBolster.swift; sourceTree = "<group>"; };
 		20671D19246B0AF800435003 /* CabinSeatRow2Pos1SideBolster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow2Pos1SideBolster.swift; sourceTree = "<group>"; };
 		20671F00246B3B0A00435003 /* Acceleration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
+		20671F02246B42E600435003 /* CodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGenerator.swift; sourceTree = "<group>"; };
+		20671F04246B439500435003 /* CommandLine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandLine+Extensions.swift"; sourceTree = "<group>"; };
 		"HMVssGraphQL::Client::Product" /* Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"HMVssGraphQL::CodeGenerator::Product" /* CodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = CodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		"HMVssGraphQL::Demo::Product" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1027,7 +1031,7 @@
 		OBJ_507 /* FilesContentGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesContentGenerator.swift; sourceTree = "<group>"; };
 		OBJ_508 /* GenEntitiesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntitiesGenerator.swift; sourceTree = "<group>"; };
 		OBJ_509 /* OutputFilesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFilesGenerator.swift; sourceTree = "<group>"; };
-		OBJ_511 /* CaseStyleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseStyleOption.swift; sourceTree = "<group>"; };
+		OBJ_511 /* CaseStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseStyle.swift; sourceTree = "<group>"; };
 		OBJ_513 /* GenArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenArgument.swift; sourceTree = "<group>"; };
 		OBJ_514 /* GenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntity.swift; sourceTree = "<group>"; };
 		OBJ_515 /* GenEntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntityType.swift; sourceTree = "<group>"; };
@@ -1601,6 +1605,7 @@
 		OBJ_500 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				20671F04246B439500435003 /* CommandLine+Extensions.swift */,
 				OBJ_501 /* GenField+Extensions.swift */,
 				OBJ_502 /* String+Converted.swift */,
 				OBJ_503 /* String+Extensions.swift */,
@@ -1612,6 +1617,7 @@
 		OBJ_505 /* Generators */ = {
 			isa = PBXGroup;
 			children = (
+				20671F02246B42E600435003 /* CodeGenerator.swift */,
 				OBJ_506 /* FileWriter.swift */,
 				OBJ_507 /* FilesContentGenerator.swift */,
 				OBJ_508 /* GenEntitiesGenerator.swift */,
@@ -1623,7 +1629,7 @@
 		OBJ_510 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_511 /* CaseStyleOption.swift */,
+				OBJ_511 /* CaseStyle.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -1771,7 +1777,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 9999;
-				LastUpgradeCheck = 9999;
+				LastUpgradeCheck = 1140;
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "VSSGraphQL" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1807,13 +1813,15 @@
 				OBJ_1096 /* FileWriter.swift in Sources */,
 				OBJ_1097 /* FilesContentGenerator.swift in Sources */,
 				OBJ_1098 /* GenEntitiesGenerator.swift in Sources */,
+				20671F05246B439500435003 /* CommandLine+Extensions.swift in Sources */,
 				OBJ_1099 /* OutputFilesGenerator.swift in Sources */,
-				OBJ_1100 /* CaseStyleOption.swift in Sources */,
+				OBJ_1100 /* CaseStyle.swift in Sources */,
 				OBJ_1101 /* GenArgument.swift in Sources */,
 				OBJ_1102 /* GenEntity.swift in Sources */,
 				OBJ_1103 /* GenEntityType.swift in Sources */,
 				OBJ_1104 /* GenField.swift in Sources */,
 				OBJ_1105 /* OutputFile.swift in Sources */,
+				20671F03246B42E600435003 /* CodeGenerator.swift in Sources */,
 				OBJ_1106 /* DocsGeneratable.swift in Sources */,
 				OBJ_1107 /* main.swift in Sources */,
 			);
@@ -2336,6 +2344,7 @@
 		OBJ_1089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -2366,6 +2375,7 @@
 		OBJ_1090 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -2396,6 +2406,7 @@
 		OBJ_1115 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -2426,6 +2437,7 @@
 		OBJ_1116 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -2457,17 +2469,43 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SWIFT_PACKAGE=1",
 					"DEBUG=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
@@ -2484,15 +2522,40 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SWIFT_PACKAGE=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";

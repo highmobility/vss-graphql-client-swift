@@ -1,6 +1,6 @@
 //
 //  GenEntity.swift
-//  
+//  CodeGenerator
 //
 //  Created by Mikk Rätsep on 05.05.20.
 //

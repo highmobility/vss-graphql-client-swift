@@ -1,6 +1,6 @@
 //
 //  String+Extensions.swift
-//
+//  CodeGenerator
 //
 //  Created by Mikk Rätsep on 11.05.20.
 //
@@ -30,7 +30,7 @@ extension String {
 
     - parameter option: The preferred case style.
     */
-    func convert(with option: CaseStyleOption) -> String {
+    func convert(with option: CaseStyle) -> String {
         switch option {
         case .lowercase:
             return lowercased()

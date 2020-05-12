@@ -1,6 +1,6 @@
 //
 //  FileWriter.swift
-//  
+//  CodeGenerator
 //
 //  Created by Mikk Rätsep on 11.05.20.
 //
@@ -12,7 +12,7 @@ import Foundation
 @available(macOS 10.15, *)
 struct FileWriter {
 
-    static func publisher(with filesPub: AnyPublisher<OutputFile, Never>) throws -> AnyPublisher<(Bool, OutputFile), Never> {
+    static func publisher(with filesPub: AnyPublisher<OutputFile, Never>, outputFolder: URL) throws -> AnyPublisher<(Bool, OutputFile), Never> {
         print("- cleaning previous \(outputFolder.lastPathComponent) folder...")
 
         // Clean the output folder first

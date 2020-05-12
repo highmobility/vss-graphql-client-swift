@@ -1,6 +1,6 @@
 //
 //  StringArray+Extensions.swift
-//  
+//  CodeGenerator
 //
 //  Created by Mikk Rätsep on 11.05.20.
 //
