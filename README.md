@@ -13,7 +13,9 @@
 
 ## Demo
 
-Demo can be run against a *known endpoint* or a *local server*.
+> **_NOTE:_**  Currently works on _macOS_ only.
+
+Demo can be run against a _known endpoint_ or a _local server_.
 
 
 #### Known endpoint
@@ -35,4 +37,4 @@ To run the demo, please follow these steps:
 3. open `VSSGraphQL.xcodeproj` 
 4. choose `Demo` as the target from top left and run it
 
-Configuration of the demo's _requested values_ can be done in `Sources/Demo/main.swift`. 
+Configuration of the demo's _requested values_ can be done in `Sources/Demo/main.swift`.
