@@ -13,7 +13,7 @@ import Foundation
  Generates VSS GraphQL models from it's spec, currently only works on macOS.
 
  Expects 2 arguments.
-    -i, --input         - path to the VSS spec file
+    -i, --input         - path to the VSS schema file
     -o, --output        - path to the output folder
  */
 

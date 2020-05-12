@@ -21,7 +21,7 @@ struct CodeGenerator {
     static func generate(inputPath: String, outputPath: String, completion: @escaping () -> Void) throws {
         // Checks if the spec-file exists
         guard FileManager.default.fileExists(atPath: inputPath) else {
-            fatalError("Spec file does not exist at path: \(inputPath)")
+            fatalError("Schema file does not exist at path: \(inputPath)")
         }
 
         // Creates the URLs
