@@ -1,5 +1,5 @@
 //
-//  IntermediateEntityType.swift
+//  GenEntityType.swift
 //  
 //
 //  Created by Mikk Rätsep on 11.05.20.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum IntermediateEntityType: String, CaseIterable {
+enum GenEntityType: String, CaseIterable {
     
     case object = "type"
     case input = "input"

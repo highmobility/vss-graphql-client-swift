@@ -15,9 +15,9 @@ private var quoteMarks = {
 
 
 @available(macOS 10.15, *)
-struct IntermediateEntitiesGenerator {
+struct GenEntitiesGenerator {
 
-    let intermediateEntitiesPub: AnyPublisher<IntermediateEntity, Never>
+    let intermediateEntitiesPub: AnyPublisher<GenEntity, Never>
 
 
     init(fromSpecFileContent content: String) throws {
@@ -76,7 +76,7 @@ struct IntermediateEntitiesGenerator {
             .flatMap { groupedLines in
                 groupedLines.publisher
             }
-            .tryCompactMap { lines -> IntermediateEntity? in
+            .tryCompactMap { lines -> GenEntity? in
                 try Self.createIntermediateEntity(from: lines)
             }
             .assertNoFailure()
@@ -87,11 +87,11 @@ struct IntermediateEntitiesGenerator {
 
 // TODO: Rewrite this to Combine
 @available(OSX 10.15, *)
-private extension IntermediateEntitiesGenerator {
+private extension GenEntitiesGenerator {
 
-    static func createIntermediateEntity(from lines: [String]) throws -> IntermediateEntity? {
+    static func createIntermediateEntity(from lines: [String]) throws -> GenEntity? {
         // Each array of strings is a group of lines associated with an entity - map them into full 'entity' objects.
-        let entity = IntermediateEntity()
+        let entity = GenEntity()
 
         entity.originalLines = lines
 
@@ -177,8 +177,8 @@ private extension IntermediateEntitiesGenerator {
         return entity.entityType == .schema ? nil : entity
     }
 
-    static func getTypeNameAndInterfacesForEntity(line: String) throws -> (type: IntermediateEntityType, name: String, interfaces: [String]) {
-        var type: IntermediateEntityType = .object
+    static func getTypeNameAndInterfacesForEntity(line: String) throws -> (type: GenEntityType, name: String, interfaces: [String]) {
+        var type: GenEntityType = .object
         var name: String = ""
         var interfaces: [String] = []
 
@@ -187,7 +187,7 @@ private extension IntermediateEntitiesGenerator {
         let line = line.trimmedWhitespaces
 
         // Check the prefix of the 'nameComponent' of the line to determine the type of the entity.
-        guard let entityType =  IntermediateEntityType.allCases.first(where: { line.hasPrefix($0.rawValue) }) else {
+        guard let entityType =  GenEntityType.allCases.first(where: { line.hasPrefix($0.rawValue) }) else {
             fatalError("Failed to find 'entity type' from line: \(line)")
         }
 
@@ -209,8 +209,8 @@ private extension IntermediateEntitiesGenerator {
         return (type, name, interfaces)
     }
 
-    static func createField(line: String) throws -> IntermediateField {
-        let field = IntermediateField()
+    static func createField(line: String) throws -> GenField {
+        let field = GenField()
         var lineWithArgsRemoved: String = line
 
         // Build the array of arguments. We do so by getting the regex for an opening and closing paranthesis, then removing
@@ -231,7 +231,7 @@ private extension IntermediateEntitiesGenerator {
                 }
                 let name = nameAndType[0]
                 let type = getSwiftType(forType: nameAndType[1])
-                field.arguments.append(IntermediateArgument(name: name, type: type))
+                field.arguments.append(GenArgument(name: name, type: type))
             }
         }
 
