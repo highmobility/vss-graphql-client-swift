@@ -12,31 +12,19 @@ import Foundation
 @available(macOS 10.15, *)
 struct FilesContentGenerator {
 
-    private var cancellables: [AnyCancellable] = []
-    let filesContentPub: AnyPublisher<String, Never>
-
-
-
-    init(from entitiesPub: AnyPublisher<IntermediateEntity, Never>) {
+    static func publisher(from entitiesPub: AnyPublisher<GenEntity, Never>) -> AnyPublisher<String, Never> {
         print("- creating files content...")
 
-        let xxxxx = entitiesPub
-            .share()
+        return entitiesPub
             .flatMap { entity -> AnyPublisher<[String], Never> in
-                let tango: AnyPublisher<[String], Never>
-
                 switch entity.entityType {
-                case .enum:         tango = Self.createSwiftLinesPub(forEnum: entity)
-                case .input:        tango = Self.createSwiftLinesPub(forInput: entity)
-                case .interface:    tango = Self.createSwiftLinesPub(forInterface: entity)
-                case .object:       tango = Self.createSwiftLinesPub(forObject: entity)
-                case .scalar:       tango = Self.createSwiftLinesPub(forScalar: entity)
+                case .enum:         return self.createSwiftLinesPub(forEnum: entity)
+                case .input:        return self.createSwiftLinesPub(forInput: entity)
+                case .interface:    return self.createSwiftLinesPub(forInterface: entity)
+                case .object:       return self.createSwiftLinesPub(forObject: entity)
+                case .scalar:       return self.createSwiftLinesPub(forScalar: entity)
                 case .schema:       fatalError()
                 }
-
-//                tango.share().sink { print($0) }.store(in: &cancellables)
-
-                return tango
             }
             .map {
                 $0.joinedWithNewLine()
@@ -51,32 +39,26 @@ struct FilesContentGenerator {
                 """
             }
             .eraseToAnyPublisher()
-
-//        xxxxx.sink { val in
-////            print("sinked:", val)
-//        }
-//        .store(in: &cancellables)
-
-        filesContentPub = xxxxx
     }
+
+
+    private init() { }
 }
 
 @available(macOS 10.15, *)
 private extension FilesContentGenerator {
 
-    static func createSwiftLinesPub(forEnum entity: IntermediateEntity) -> AnyPublisher<[String], Never> {
+    static func createSwiftLinesPub(forEnum entity: GenEntity) -> AnyPublisher<[String], Never> {
         guard entity.entityType == .enum else {
             fatalError()
         }
 
         let caseLines = entity.fields
             .publisher
-            .share()
             .flatMap { field -> AnyPublisher<(String, String), Never> in
                 let caseLine = "case \(field.name.convertedToGoodCaseName) = \"\(field.name)\""
 
                 return field.documentationLinesPub
-                    .share()
                     .collect()
                     .map {
                         $0.joinedWithNewLine()
@@ -94,7 +76,6 @@ private extension FilesContentGenerator {
             }
 
         return entity.documentationLinesPub
-            .share()
             .append("public enum \(entity.name.convertedToValidTypeName): String, Enum {")
             .append(caseLines)
             .append("}")
@@ -102,14 +83,13 @@ private extension FilesContentGenerator {
             .eraseToAnyPublisher()
     }
 
-    static func createSwiftLinesPub(forInput entity: IntermediateEntity) -> AnyPublisher<[String], Never> {
+    static func createSwiftLinesPub(forInput entity: GenEntity) -> AnyPublisher<[String], Never> {
         guard entity.entityType == .input else {
             fatalError()
         }
 
         let ivarLines = entity.fields
             .publisher
-            .share()
             .flatMap { field -> AnyPublisher<(String, String), Never> in
                 var fieldType = field.type.convertedToValidTypeName
 
@@ -117,10 +97,9 @@ private extension FilesContentGenerator {
                     fieldType += "!"
                 }
 
-                let ivarLine = "var \(field.name.convertedToValidPropertyName): \(fieldType)"
+                let ivarLine = "public var \(field.name.convertedToValidPropertyName): \(fieldType)"
 
                 return field.documentationLinesPub
-                    .share()
                     .collect()
                     .map {
                         $0.joinedWithNewLine()
@@ -138,7 +117,6 @@ private extension FilesContentGenerator {
             }
 
         return entity.documentationLinesPub
-            .share()
             .append("public class \(entity.name.convertedToValidTypeName): Input, ObjectSchema {")
             .append(ivarLines)
             .append(.publicRequiredInit)
@@ -146,13 +124,12 @@ private extension FilesContentGenerator {
             .eraseToAnyPublisher()
     }
 
-    static func createSwiftLinesPub(forInterface entity: IntermediateEntity) -> AnyPublisher<[String], Never> {
+    static func createSwiftLinesPub(forInterface entity: GenEntity) -> AnyPublisher<[String], Never> {
         guard entity.entityType == .interface else {
             fatalError()
         }
 
         return entity.documentationLinesPub
-            .share()
             .append("public class \(entity.name.convertedToValidTypeName): Interface {")
             .append(entity.fields.ivarLinesPub)
             .append(.publicRequiredInit)
@@ -160,7 +137,7 @@ private extension FilesContentGenerator {
             .eraseToAnyPublisher()
     }
 
-    static func createSwiftLinesPub(forObject entity: IntermediateEntity) -> AnyPublisher<[String], Never> {
+    static func createSwiftLinesPub(forObject entity: GenEntity) -> AnyPublisher<[String], Never> {
         guard entity.entityType == .object else {
             fatalError()
         }
@@ -169,17 +146,15 @@ private extension FilesContentGenerator {
 
         let interfaceLines = entity.interfaces
             .publisher
-            .share()
             .collect()
             .compactMap { interfaces -> String? in
                 interfaces.isEmpty ? nil : interfaces.joined(separator: ", ")
             }
             .map { interfaces in
-                "\n" + "static let implements = Interfaces(\(interfaces))".indented(byLevel: 1)
+                "\n" + "public static let implements = Interfaces(\(interfaces))".indented(byLevel: 1)
             }
 
         return entity.documentationLinesPub
-            .share()
             .append("public class \(name): Object, ObjectSchema {")
             .append(interfaceLines)
             .append(entity.fields.ivarLinesPub)
@@ -188,13 +163,12 @@ private extension FilesContentGenerator {
             .eraseToAnyPublisher()
     }
 
-    static func createSwiftLinesPub(forScalar entity: IntermediateEntity) -> AnyPublisher<[String], Never> {
+    static func createSwiftLinesPub(forScalar entity: GenEntity) -> AnyPublisher<[String], Never> {
         guard entity.entityType == .scalar else {
             fatalError()
         }
 
         return entity.documentationLinesPub
-            .share()
             .append("public typealias \(entity.name.convertedToValidTypeName) = String")    // TODO: umm, every scalar is a string?
             .collect()
             .eraseToAnyPublisher()

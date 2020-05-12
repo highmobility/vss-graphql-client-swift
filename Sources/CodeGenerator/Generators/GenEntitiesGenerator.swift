@@ -1,5 +1,5 @@
 //
-//  IntermediateEntitiesGenerator.swift
+//  GenEntitiesGenerator.swift
 //  
 //
 //  Created by Mikk Rätsep on 11.05.20.
@@ -17,15 +17,11 @@ private var quoteMarks = {
 @available(macOS 10.15, *)
 struct GenEntitiesGenerator {
 
-    let intermediateEntitiesPub: AnyPublisher<GenEntity, Never>
-
-
-    init(fromSpecFileContent content: String) throws {
+    static func publisher(fromSpecFileContent content: String) throws -> AnyPublisher<GenEntity, Never> {
         print("- creating intermediate entities...")
 
-        intermediateEntitiesPub = content.split(separator: "\n")
+        return content.split(separator: "\n")
             .publisher
-            .share()
             .collect()
             .map { lines -> [[String]] in
                 // Now, group the lines into the 'entity' (e.g. type, enum, input, etc) that they're associated with. Each 'entity'
@@ -82,6 +78,9 @@ struct GenEntitiesGenerator {
             .assertNoFailure()
             .eraseToAnyPublisher()
     }
+
+
+    private init() { }
 }
 
 

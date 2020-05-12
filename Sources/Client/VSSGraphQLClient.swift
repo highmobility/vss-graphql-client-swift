@@ -1,5 +1,8 @@
 //
-// Hello fellow human
+//  VSSGraphQLClient.swift
+//  Client
+//
+//  Created by Mikk Rätsep on 12.05.20.
 //
 
 @_exported import Artemis

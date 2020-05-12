@@ -12,10 +12,7 @@ import Foundation
 @available(macOS 10.15, *)
 struct FileWriter {
 
-    let fileWritesPub: AnyPublisher<(Bool, OutputFile), Never>
-
-
-    init(with filesPub: AnyPublisher<OutputFile, Never>) throws {
+    static func publisher(with filesPub: AnyPublisher<OutputFile, Never>) throws -> AnyPublisher<(Bool, OutputFile), Never> {
         print("- cleaning previous \(outputFolder.lastPathComponent) folder...")
 
         // Clean the output folder first
@@ -28,7 +25,7 @@ struct FileWriter {
         print("- converting to data and saving files...")
 
         // Write the files and output success
-        fileWritesPub = filesPub
+        return filesPub
             .map {
                 Data($0.content.utf8)
             }
@@ -42,4 +39,7 @@ struct FileWriter {
             .zip(filesPub)
             .eraseToAnyPublisher()
     }
+
+
+    private init() { }
 }

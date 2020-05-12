@@ -12,7 +12,7 @@ import Foundation
 class GenEntity: DocsGeneratable {
 
     var name: String = ""
-    var fields: [IntermediateField] = []
+    var fields: [GenField] = []
     var interfaces: [String] = []
     var entityType: GenEntityType = .object
     var documentation: [String] = []

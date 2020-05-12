@@ -330,7 +330,6 @@
 		20671E58246B0AF800435003 /* DrivetrainTransmissionGearChangeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C72246B0AF200435003 /* DrivetrainTransmissionGearChangeMode.swift */; };
 		20671E59246B0AF800435003 /* CabinSeatRow3Pos1Lumbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C73246B0AF200435003 /* CabinSeatRow3Pos1Lumbar.swift */; };
 		20671E5A246B0AF800435003 /* OBDDriveCycleStatusIgnitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C74246B0AF200435003 /* OBDDriveCycleStatusIgnitionType.swift */; };
-		20671E5B246B0AF800435003 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C75246B0AF200435003 /* Acceleration.swift */; };
 		20671E5C246B0AF800435003 /* CabinDoorRow2LeftWindowSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C76246B0AF200435003 /* CabinDoorRow2LeftWindowSwitch.swift */; };
 		20671E5D246B0AF800435003 /* DrivetrainFuelSystemFuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C77246B0AF200435003 /* DrivetrainFuelSystemFuelType.swift */; };
 		20671E5E246B0AF800435003 /* CabinSeatRow3Pos3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671C78246B0AF200435003 /* CabinSeatRow3Pos3.swift */; };
@@ -495,8 +494,9 @@
 		20671EFD246B0AF900435003 /* OBDO2AltBank1Sensor3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671D17246B0AF800435003 /* OBDO2AltBank1Sensor3.swift */; };
 		20671EFE246B0AF900435003 /* CabinSeatRow4Pos4SwitchSideBolster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671D18246B0AF800435003 /* CabinSeatRow4Pos4SwitchSideBolster.swift */; };
 		20671EFF246B0AF900435003 /* CabinSeatRow2Pos1SideBolster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671D19246B0AF800435003 /* CabinSeatRow2Pos1SideBolster.swift */; };
+		20671F01246B3B0A00435003 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F00246B3B0A00435003 /* Acceleration.swift */; };
 		OBJ_1071 /* VehicleQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_497 /* VehicleQuery.swift */; };
-		OBJ_1092 /* IntermediateField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_501 /* IntermediateField+Extensions.swift */; };
+		OBJ_1092 /* GenField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_501 /* GenField+Extensions.swift */; };
 		OBJ_1093 /* String+Converted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_502 /* String+Converted.swift */; };
 		OBJ_1094 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_503 /* String+Extensions.swift */; };
 		OBJ_1095 /* StringArray+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_504 /* StringArray+Extensions.swift */; };
@@ -850,7 +850,6 @@
 		20671C72246B0AF200435003 /* DrivetrainTransmissionGearChangeMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrivetrainTransmissionGearChangeMode.swift; sourceTree = "<group>"; };
 		20671C73246B0AF200435003 /* CabinSeatRow3Pos1Lumbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow3Pos1Lumbar.swift; sourceTree = "<group>"; };
 		20671C74246B0AF200435003 /* OBDDriveCycleStatusIgnitionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBDDriveCycleStatusIgnitionType.swift; sourceTree = "<group>"; };
-		20671C75246B0AF200435003 /* Acceleration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		20671C76246B0AF200435003 /* CabinDoorRow2LeftWindowSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinDoorRow2LeftWindowSwitch.swift; sourceTree = "<group>"; };
 		20671C77246B0AF200435003 /* DrivetrainFuelSystemFuelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrivetrainFuelSystemFuelType.swift; sourceTree = "<group>"; };
 		20671C78246B0AF200435003 /* CabinSeatRow3Pos3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow3Pos3.swift; sourceTree = "<group>"; };
@@ -1015,11 +1014,12 @@
 		20671D17246B0AF800435003 /* OBDO2AltBank1Sensor3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBDO2AltBank1Sensor3.swift; sourceTree = "<group>"; };
 		20671D18246B0AF800435003 /* CabinSeatRow4Pos4SwitchSideBolster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow4Pos4SwitchSideBolster.swift; sourceTree = "<group>"; };
 		20671D19246B0AF800435003 /* CabinSeatRow2Pos1SideBolster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow2Pos1SideBolster.swift; sourceTree = "<group>"; };
+		20671F00246B3B0A00435003 /* Acceleration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		"HMVssGraphQL::Client::Product" /* Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"HMVssGraphQL::CodeGenerator::Product" /* CodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = CodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		"HMVssGraphQL::Demo::Product" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_497 /* VehicleQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleQuery.swift; sourceTree = "<group>"; };
-		OBJ_501 /* IntermediateField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntermediateField+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_501 /* GenField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenField+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_502 /* String+Converted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Converted.swift"; sourceTree = "<group>"; };
 		OBJ_503 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_504 /* StringArray+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringArray+Extensions.swift"; sourceTree = "<group>"; };
@@ -1082,7 +1082,7 @@
 		OBJ_10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				20671C75246B0AF200435003 /* Acceleration.swift */,
+				20671F00246B3B0A00435003 /* Acceleration.swift */,
 				20671C82246B0AF200435003 /* ADAS.swift */,
 				20671BC5246B0AED00435003 /* ADASABS.swift */,
 				20671B84246B0AEB00435003 /* ADASCruiseControl.swift */,
@@ -1601,7 +1601,7 @@
 		OBJ_500 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_501 /* IntermediateField+Extensions.swift */,
+				OBJ_501 /* GenField+Extensions.swift */,
 				OBJ_502 /* String+Converted.swift */,
 				OBJ_503 /* String+Extensions.swift */,
 				OBJ_504 /* StringArray+Extensions.swift */,
@@ -1800,7 +1800,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_1092 /* IntermediateField+Extensions.swift in Sources */,
+				OBJ_1092 /* GenField+Extensions.swift in Sources */,
 				OBJ_1093 /* String+Converted.swift in Sources */,
 				OBJ_1094 /* String+Extensions.swift in Sources */,
 				OBJ_1095 /* StringArray+Extensions.swift in Sources */,
@@ -1958,6 +1958,7 @@
 				20671DB8246B0AF800435003 /* CabinDoorRow3LeftWindowSwitch.swift in Sources */,
 				20671E24246B0AF800435003 /* CabinSeatRow1Pos5SwitchSideBolster.swift in Sources */,
 				20671E0A246B0AF800435003 /* CabinSeatRow2Pos1SwitchRecline.swift in Sources */,
+				20671F01246B3B0A00435003 /* Acceleration.swift in Sources */,
 				20671E27246B0AF800435003 /* DrivetrainInternalCombustionEngine.swift in Sources */,
 				20671D93246B0AF800435003 /* CabinSeatRow4Pos2Switch.swift in Sources */,
 				20671DF4246B0AF800435003 /* CabinSeatRow4Pos3.swift in Sources */,
@@ -2256,7 +2257,6 @@
 				20671EAB246B0AF900435003 /* CabinSeatRow1Pos1SwitchMassage.swift in Sources */,
 				20671D91246B0AF800435003 /* CabinSeatRow4Pos5SwitchCushion.swift in Sources */,
 				20671D92246B0AF800435003 /* CabinSeatRow3Pos2SwitchMassage.swift in Sources */,
-				20671E5B246B0AF800435003 /* Acceleration.swift in Sources */,
 				20671E68246B0AF800435003 /* ADAS.swift in Sources */,
 				20671D4E246B0AF800435003 /* CabinSeatRow3Pos2HeadRestraint.swift in Sources */,
 				20671E0F246B0AF800435003 /* CabinInfotainmentHMIDistanceUnit.swift in Sources */,

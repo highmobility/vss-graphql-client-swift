@@ -1,5 +1,5 @@
 //
-//  IntermediateField+Extensions.swift
+//  GenField+Extensions.swift
 //  
 //
 //  Created by Mikk Rätsep on 11.05.20.
@@ -10,14 +10,12 @@ import Foundation
 
 
 @available(macOS 10.15, *)
-extension Array where Element == IntermediateField {
+extension Array where Element == GenField {
 
     var ivarLinesPub: AnyPublisher<String, Never>   {
         publisher
-            .share()
             .flatMap { field -> AnyPublisher<(String, String), Never> in
                 field.documentationLinesPub
-                    .share()
                     .collect()
                     .map {
                         $0.joinedWithNewLine()
@@ -38,9 +36,9 @@ extension Array where Element == IntermediateField {
 }
 
 @available(OSX 10.15, *)
-private extension Array where Element == IntermediateField {
+private extension Array where Element == GenField {
 
-    func createArgumentsLinesPub(for field: IntermediateField) -> AnyPublisher<String, Never> {
+    func createArgumentsLinesPub(for field: GenField) -> AnyPublisher<String, Never> {
         let argumentName = field.argumentsTypeName
         let fieldType = field.type.convertedToValidTypeName
         let propertyName = field.name.convertedToValidPropertyName
@@ -52,7 +50,7 @@ private extension Array where Element == IntermediateField {
             let argVars = field.arguments
                 .publisher
                 .map {
-                    "var \($0.name.convertedToValidPropertyName) = Argument<\($0.type)>(\"\($0.name)\")"
+                    "public var \($0.name.convertedToValidPropertyName) = Argument<\($0.type)>(\"\($0.name)\")"
                 }
                 .map {
                     $0.indented(byLevel: 1)
@@ -60,7 +58,7 @@ private extension Array where Element == IntermediateField {
 
             argumentsPub = argumentsPub
                 .append("\n")
-                .append("final class \(argumentName): ArgumentList {")
+                .append("public final class \(argumentName): ArgumentList {")
                 .append(argVars)
                 .append("}")
                 .collect()
@@ -72,7 +70,7 @@ private extension Array where Element == IntermediateField {
 
         // Output ivar-lines
         return [String]().publisher
-            .append("var \(propertyName) = Field<\(fieldType), \(argumentName)>(\"\(field.name)\")")
+            .append("public var \(propertyName) = Field<\(fieldType), \(argumentName)>(\"\(field.name)\")")
             .append(argumentsPub)
             .collect()
             .map {
