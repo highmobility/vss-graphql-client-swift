@@ -18,7 +18,7 @@ Both approaches require 2 arguments as input
 
 #### Terminal
 
-An executable can be created 
+An executable can be created beforehand with _Xcode_ or `swift build`.  
 To run the generator from terminal, please follow the steps:
 
 1. navigate to the directory of the executable
