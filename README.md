@@ -10,19 +10,23 @@
 
 > **_NOTE:_**  Currently works on _macOS_ only.
 
-Code generator can be run from the _terminal_ or straight from _Xcode_.  
+Code generator can be run from a _terminal_ or _Xcode_.  
 
-Both approaches require 2 arguments as input  
-1. path to VSS GraphQL _schema file_, there's one included in `Sources/CodeGenerator/Schema/vehicle.ts`  
-2. path to the _output folder_, it's recommended to set it to `Sources/Client/Models`
+The program expects 2 arguments:  
+
+1. `-i, --input` -- path to the _VSS GraphQL schema file_
+    - there's one included in the repo at `Sources/CodeGenerator/Schema/vehicle.ts`
+2. `-o, --output` -- path to the _models output folder_
+    - it's recommended to set it to `Sources/Client/Models`
+
 
 #### Terminal
-
-An executable can be created beforehand with _Xcode_ or `swift build`.  
+  
 To run the generator from terminal, please follow the steps:
 
 1. navigate to the directory of the executable
-2. execute `{executable_path} -i {vss_schema_file_path} -o {models_output_folder_path}`
+    - an executable can be created beforehand with Xcode or `swift build`
+2. execute `{executable_path} -i {schema_path} -o {output_path}`
 
 or simply:  
 
@@ -41,22 +45,23 @@ To run the generator from Xcode, there are 2 options, either:
 3. choose `CodeGenerator` as the target
 4. navigate to `Run > Arguments`
 5. add the 2 required arguments to `Arguments Passed on Launch`
-    - schema file path as `-i {vss_schema_file_path}`
-    - output folder path as `-o {models_output_folder_path}`
+    - schema file path as `-i {schema_path}`
+    - output folder path as `-o {output_path}`
 
-Or:  
+or:  
 
 1. open `VSSGraphQL.xcodeproj`
 2. navigate to `Sources/CodeGenerator/main.swift`
-3. on _L:31_ replace the `inputPath:` and `outputPath:` arguments
-4. comment out _L:21-24_
+3. on _L31_ replace the `inputPath:` and `outputPath:` arguments
+4. comment out _L21-24_
 
 
 ## Demo
 
 > **_NOTE:_**  Currently works on _macOS_ only.
 
-Demo can be run against a _known endpoint_ or a _local server_.
+Demo can be run against a _known endpoint_ or a _local server_.  
+Configuration of the  _requested values_ can be done in `Sources/Demo/main.swift`.
 
 
 #### Known endpoint
@@ -64,9 +69,8 @@ Demo can be run against a _known endpoint_ or a _local server_.
 To run the demo against a working GraphQL endpoint, please follow these steps:
 
 1. open `VSSGraphQL.xcodeproj`
-2. choose `Demo` as the target from top left and run it
-
-Configuration of the _endpoint's URL_ and _requested values_ can be done in `Sources/Demo/main.swift`.  
+2. configure the URL at `Sources/Demo/main.swift:L14`
+3. choose `Demo` as the target from top left and run it  
 
 
 #### Local server
@@ -77,5 +81,3 @@ To run the demo against a local VSS GraphQL server, please follow these steps:
 2. follow a _setup_ to run the VSS data server locally
 3. open `VSSGraphQL.xcodeproj` 
 4. choose `Demo` as the target from top left and run it
-
-Configuration of the demo's _requested values_ can be done in `Sources/Demo/main.swift`.
