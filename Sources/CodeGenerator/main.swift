@@ -29,6 +29,7 @@ if #available(OSX 10.15, *) {
 
     do {
         try CodeGenerator.generate(inputPath: inputArg.trimmedWhitespaces, outputPath: outputArg.trimmedWhitespaces) {
+            print("- done")
             exit(EXIT_SUCCESS)
         }
     }

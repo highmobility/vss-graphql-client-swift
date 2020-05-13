@@ -506,7 +506,7 @@
 		OBJ_1097 /* FilesContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_507 /* FilesContentGenerator.swift */; };
 		OBJ_1098 /* GenEntitiesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_508 /* GenEntitiesGenerator.swift */; };
 		OBJ_1099 /* OutputFilesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_509 /* OutputFilesGenerator.swift */; };
-		OBJ_1100 /* CaseStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_511 /* CaseStyle.swift */; };
+		OBJ_1100 /* CaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_511 /* CaseType.swift */; };
 		OBJ_1101 /* GenArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_513 /* GenArgument.swift */; };
 		OBJ_1102 /* GenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_514 /* GenEntity.swift */; };
 		OBJ_1103 /* GenEntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_515 /* GenEntityType.swift */; };
@@ -1031,7 +1031,7 @@
 		OBJ_507 /* FilesContentGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesContentGenerator.swift; sourceTree = "<group>"; };
 		OBJ_508 /* GenEntitiesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntitiesGenerator.swift; sourceTree = "<group>"; };
 		OBJ_509 /* OutputFilesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFilesGenerator.swift; sourceTree = "<group>"; };
-		OBJ_511 /* CaseStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseStyle.swift; sourceTree = "<group>"; };
+		OBJ_511 /* CaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseType.swift; sourceTree = "<group>"; };
 		OBJ_513 /* GenArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenArgument.swift; sourceTree = "<group>"; };
 		OBJ_514 /* GenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntity.swift; sourceTree = "<group>"; };
 		OBJ_515 /* GenEntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntityType.swift; sourceTree = "<group>"; };
@@ -1629,7 +1629,7 @@
 		OBJ_510 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_511 /* CaseStyle.swift */,
+				OBJ_511 /* CaseType.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -1815,7 +1815,7 @@
 				OBJ_1098 /* GenEntitiesGenerator.swift in Sources */,
 				20671F05246B439500435003 /* CommandLine+Extensions.swift in Sources */,
 				OBJ_1099 /* OutputFilesGenerator.swift in Sources */,
-				OBJ_1100 /* CaseStyle.swift in Sources */,
+				OBJ_1100 /* CaseType.swift in Sources */,
 				OBJ_1101 /* GenArgument.swift in Sources */,
 				OBJ_1102 /* GenEntity.swift in Sources */,
 				OBJ_1103 /* GenEntityType.swift in Sources */,

@@ -14,19 +14,25 @@ Code generator can be run from the _terminal_ or straight from _Xcode_.
 
 Both approaches require 2 arguments as input  
 1. path to VSS GraphQL _schema file_, there's one included in `Sources/CodeGenerator/Schema/vehicle.ts`  
-2. path to the _output folder_, It's recommended to set it to `Sources/Client/Models`
+2. path to the _output folder_, it's recommended to set it to `Sources/Client/Models`
 
 #### Terminal
 
+An executable can be created 
 To run the generator from terminal, please follow the steps:
 
 1. navigate to the directory of the executable
-2. execute `{executable_path}` with 2 arguments
-    - schema file path as `-i {vss_schema_file_path}`  
-    - output folder path as `-o {models_output_folder_path}`
+2. execute `{executable_path} -i {vss_schema_file_path} -o {models_output_folder_path}`
+
+or simply:  
+
+1. navigate to repo's root directory
+2. execute `swift run CodeGenerator -i Sources/CodeGenerator/Schema/vehicle.ts -o Sources/Client/Models`
 
 
 #### Xcode
+
+> **_note:_**  Xcode options might require _absolute paths_ as input.
 
 To run the generator from Xcode, there are 2 options, either:
 
@@ -34,7 +40,7 @@ To run the generator from Xcode, there are 2 options, either:
 2. click `Edit Scheme...` from the target-selection menu from top left
 3. choose `CodeGenerator` as the target
 4. navigate to `Run > Arguments`
-5. add the 2 required arguments
+5. add the 2 required arguments to `Arguments Passed on Launch`
     - schema file path as `-i {vss_schema_file_path}`
     - output folder path as `-o {models_output_folder_path}`
 

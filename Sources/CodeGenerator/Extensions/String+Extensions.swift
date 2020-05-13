@@ -30,7 +30,7 @@ extension String {
 
     - parameter option: The preferred case style.
     */
-    func convert(with option: CaseStyle) -> String {
+    func convert(with option: CaseType) -> String {
         switch option {
         case .lowercase:
             return lowercased()

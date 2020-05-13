@@ -27,7 +27,6 @@ let package = Package(
         ),
         .target(name: "CodeGenerator",
                 dependencies: [
-                    "Client",
                     "Artemis",
 //                    "ArgumentParser",
                 ]

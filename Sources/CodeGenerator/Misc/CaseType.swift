@@ -1,5 +1,5 @@
 //
-//  CaseStyle.swift
+//  CaseType.swift
 //  CodeGenerator
 //
 //  Created by Mikk Rätsep on 11.05.20.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum CaseStyle {
+enum CaseType {
 
     /// text like this
     case lowercase
