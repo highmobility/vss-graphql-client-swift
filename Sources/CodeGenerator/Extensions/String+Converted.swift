@@ -41,16 +41,16 @@ extension String {
             var numberWords = number.asWord.components(separatedBy: CharacterSet.letters.inverted)
 
             return numberWords.removeFirst() +
-                numberWords.joined(separator: " ").capitalized.replacingOccurrences(of: [" "]) +
+                numberWords.joined(separator: " ").capitalized.deletingOccurrences(of: " ") +
                 trimmedWord.suffix(trimmedWord.count - digits.count)
         }
 
         return otherWords.removeFirst() +
-            otherWords.joined(separator: " ").capitalized.replacingOccurrences(of: [" "])
+            otherWords.joined(separator: " ").capitalized.deletingOccurrences(of: " ")
     }
 
     var convertedToValidTypeName: String {
-        replacingOccurrences(of: ["Vehicle_", "_Enum", "_"])
+        deletingOccurrences(of: "Vehicle_", "_Enum", "_")
             .convert(with: .pascalCase)
     }
 

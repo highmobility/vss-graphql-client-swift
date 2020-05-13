@@ -84,7 +84,7 @@ struct GenEntitiesGenerator {
 }
 
 
-// TODO: Rewrite this to Combine
+// TODO: Rewrite this in Combine
 @available(OSX 10.15, *)
 private extension GenEntitiesGenerator {
 
@@ -106,7 +106,7 @@ private extension GenEntitiesGenerator {
             }
 
             if isBuildingDocumentation {
-                let docLine = line.replacingOccurrences(of: quoteMarks(3), with: "").trimmingCharacters(in: .whitespaces)
+                let docLine = line.deletingOccurrences(of: quoteMarks(3)).trimmedWhitespaces
                 // Assume the comment is for the entity if its 'name' is empty (i.e. we haven't hit the declaration line yet)
                 if entity.name == "" && !docLine.isEmpty {
                     entity.documentation.append(docLine)
@@ -133,7 +133,7 @@ private extension GenEntitiesGenerator {
                 entity.interfaces = interfaces
             }
                 // Otherwise, we're building a field.
-            else if !line.contains("}") && !line.replacingOccurrences(of: quoteMarks(3), with: "").trimmedWhitespaces.isEmpty {
+            else if !line.contains("}") && !line.deletingOccurrences(of: quoteMarks(3)).trimmedWhitespaces.isEmpty {
                 /// If the line contains a left bracket, it's the the first line of a field, so create a new 'field being built'.
                 /// However, make sure to keep going to the next if...
                 if line.contains("(") {
@@ -192,7 +192,7 @@ private extension GenEntitiesGenerator {
 
         // When the type is determined, remove the entity type from the 'nameComponent'.
         // Additionally, remove any whitespace in the 'nameComponent' to get the name of the entity.
-        name = lineSplitByImplements[0].replacingOccurrences(of: [entityType.rawValue, " ", "{"])
+        name = lineSplitByImplements[0].deletingOccurrences(of: entityType.rawValue, " ", "{")
         type = entityType
 
         guard !name.isEmpty || type == .schema else {
@@ -202,7 +202,7 @@ private extension GenEntitiesGenerator {
         // Next, get the implemented interfaces. We can do this by just removing whitespace/the opening curly brace on the
         // second item in the split line and splitting them by commas.
         if lineSplitByImplements.count == 2 {
-            interfaces = lineSplitByImplements[1].replacingOccurrences(of: [" ", "{"]).split(separator: ",").map { String($0) }
+            interfaces = lineSplitByImplements[1].deletingOccurrences(of: " ", "{").split(separator: ",").map { String($0) }
         }
 
         return (type, name, interfaces)
@@ -219,9 +219,7 @@ private extension GenEntitiesGenerator {
             lineWithArgsRemoved.removeSubrange(argsRange)
 
             let args = String(line[argsRange])
-                .replacingOccurrences(of: " ", with: "")
-                .replacingOccurrences(of: "(", with: "")
-                .replacingOccurrences(of: ")", with: "")
+                .deletingOccurrences(of: " ", "(", ")")
                 .split(separator: ",").map { String($0) }
             for arg in args {
                 let nameAndType = arg.split(separator: ":").map { String($0) }
@@ -237,7 +235,7 @@ private extension GenEntitiesGenerator {
         // Once we have the line with the arguments portion removed, we can simply perform the same 'remove whitespace/split
         // by colon' algorithm to get the name and type of the field.
         let nameAndType = lineWithArgsRemoved
-            .replacingOccurrences(of: " ", with: "")
+            .deletingOccurrences(of: " ")
             .split(separator: ":").map { String($0) }
 
         field.name = nameAndType[0]
@@ -255,10 +253,10 @@ private extension GenEntitiesGenerator {
             var arrayElementType = type
             if type.hasSuffix("!") {
                 arrayElementType.removeLast()
-                arrayElementType = arrayElementType.trimmingCharacters(in: CharacterSet(charactersIn: "[]"))
+                arrayElementType = arrayElementType.trimmingCharacters(in: .init(charactersIn: "[]"))
                 arrayElementType = "[\(getSwiftType(forType: arrayElementType))]"
             } else {
-                arrayElementType = arrayElementType.trimmingCharacters(in: CharacterSet(charactersIn: "[]"))
+                arrayElementType = arrayElementType.trimmingCharacters(in: .init(charactersIn: "[]"))
                 arrayElementType = "[\(getSwiftType(forType: arrayElementType))]?"
             }
             return arrayElementType
@@ -266,7 +264,7 @@ private extension GenEntitiesGenerator {
 
         let optionalsAccountedType: String
         if type.contains("!") {
-            optionalsAccountedType = type.replacingOccurrences(of: "!", with: "")
+            optionalsAccountedType = type.deletingOccurrences(of: "!")
         } else {
             optionalsAccountedType = type.appending("?")
         }

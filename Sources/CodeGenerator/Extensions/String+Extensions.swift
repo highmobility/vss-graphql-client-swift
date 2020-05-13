@@ -76,20 +76,12 @@ extension String {
         return indentation + replacingOccurrences(of: "\n", with: "\n" + indentation)
     }
 
-    func replacingOccurrences<T>(of targets: [T],
-                                 with replacement: String = "",
-                                 options: CompareOptions = [],
-                                 range searchRange: Range<Index>? = nil) -> String where T: StringProtocol {
+    func deletingOccurrences<T>(of targets: T...,
+                                options: CompareOptions = [],
+                                range searchRange: Range<Index>? = nil) -> String where T: StringProtocol {
 
         targets.reduce(self) {
-            if $0 == "_" &&
-                $0.count > 1
-                && $0[$0.startIndex] == "_"
-                && $0[$0.index(after: $0.startIndex)].isNumber {
-                    return $0
-            }
-
-            return $0.replacingOccurrences(of: $1, with: replacement, options: options, range: searchRange)
+            $0.replacingOccurrences(of: $1, with: "", options: options, range: searchRange)
         }
     }
 }

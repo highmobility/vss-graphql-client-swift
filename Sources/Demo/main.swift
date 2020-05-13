@@ -51,8 +51,10 @@ client.execute(operation: op) { result in
         print("ERROR:", error)
 
     case .success(let partialVehicle):
+        print()
         print("SUCCESS:", partialVehicle)
 
+        print()
         print("brand:", (partialVehicle.vehicleIdentification?.brand ?? nil) as Any)
         print("isMoving:", (partialVehicle.isMoving ?? nil) as Any)
 
