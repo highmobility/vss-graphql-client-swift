@@ -10,13 +10,13 @@
 
 > **_NOTE:_**  Currently works on _macOS_ only.
 
-Code generator can be run from a _terminal_ or _Xcode_.  
+Code generator can be run from _terminal_ or _Xcode_.  
 
 The program expects 2 arguments:  
 
-1. `-i, --input` -- path to the _VSS GraphQL schema file_
+- `-i, --input` -- path to the _VSS GraphQL schema file_
     - there's one included in the repo at `Sources/CodeGenerator/Schema/vehicle.ts`
-2. `-o, --output` -- path to the _models output folder_
+- `-o, --output` -- path to the _models output folder_
     - it's recommended to set it to `Sources/Client/Models`
 
 
@@ -61,12 +61,12 @@ or:
 > **_NOTE:_**  Currently works on _macOS_ only.
 
 Demo can be run against a _known endpoint_ or a _local server_.  
-Configuration of the  _requested values_ can be done in `Sources/Demo/main.swift`.
+Configuration of the  _requested values (data points)_ can be done in `Sources/Demo/main.swift`.
 
 
 #### Known endpoint
 
-To run the demo against a working GraphQL endpoint, please follow these steps:
+To run the demo against a working VSS GraphQL endpoint, please follow these steps:
 
 1. open `VSSGraphQL.xcodeproj`
 2. configure the URL at `Sources/Demo/main.swift:L14`
