@@ -22,8 +22,8 @@ To run the generator from terminal, please follow the steps:
 
 1. navigate to the directory of the executable
 2. execute `{executable_path}` with 2 arguments
-    - _schema path_ path as `-i {vss_spec_file_path}`  
-    - _output folder_ path as `-o {models_output_folder_path}`
+    - schema file path as `-i {vss_schema_file_path}`  
+    - output folder path as `-o {models_output_folder_path}`
 
 
 #### Xcode
@@ -35,8 +35,8 @@ To run the generator from Xcode, there are 2 options, either:
 3. choose `CodeGenerator` as the target
 4. navigate to `Run > Arguments`
 5. add the 2 required arguments
-    -  _schema file_ path as `-i {vss_schema_file_path}`
-    - _output folder_ path as `-o {models_output_folder_path}`
+    - schema file path as `-i {vss_schema_file_path}`
+    - output folder path as `-o {models_output_folder_path}`
 
 Or:  
 
@@ -55,7 +55,7 @@ Demo can be run against a _known endpoint_ or a _local server_.
 
 #### Known endpoint
 
-To run the demo, please follow these steps:
+To run the demo against a working GraphQL endpoint, please follow these steps:
 
 1. open `VSSGraphQL.xcodeproj`
 2. choose `Demo` as the target from top left and run it
@@ -65,7 +65,7 @@ Configuration of the _endpoint's URL_ and _requested values_ can be done in `Sou
 
 #### Local server
 
-To run the demo, please follow these steps:  
+To run the demo against a local VSS GraphQL server, please follow these steps:  
 
 1. get the VSS data server from [GENIVI/vss-graphql](https://github.com/GENIVI/vss-graphql)
 2. follow a _setup_ to run the VSS data server locally
