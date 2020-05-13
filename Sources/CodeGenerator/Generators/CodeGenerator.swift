@@ -31,6 +31,7 @@ struct CodeGenerator {
         // Extracts the spec-file's content
         let content = try String(contentsOf: inputFile, encoding: .utf8)
 
+
         // Creates "intermediate entities" publisher
         let genEntities = try GenEntitiesGenerator.publisher(fromSpecFileContent: content).makeConnectable()
 
@@ -42,6 +43,7 @@ struct CodeGenerator {
             })
             .store(in: &cancellables)
         }
+
 
         // Creates "files content" publisher
         let fileContents = FilesContentGenerator.publisher(from: genEntities.eraseToAnyPublisher())
@@ -55,6 +57,7 @@ struct CodeGenerator {
             .store(in: &cancellables)
         }
 
+
         // Creates "output files" publisher
         let outputFiles = try OutputFilesGenerator.publisher(fromContentsPub: fileContents, entitiesPub: genEntities.eraseToAnyPublisher(), outputFolder: outputFolder)
 
@@ -66,6 +69,7 @@ struct CodeGenerator {
             })
             .store(in: &cancellables)
         }
+
 
         // Creates "writes" publisher
         let writes = try FileWriter.publisher(with: outputFiles, outputFolder: outputFolder)

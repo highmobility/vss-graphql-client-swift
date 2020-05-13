@@ -52,7 +52,7 @@ or:
 
 1. open `VSSGraphQL.xcodeproj`
 2. navigate to `Sources/CodeGenerator/main.swift`
-3. on _L31_ replace the `inputPath:` and `outputPath:` arguments
+3. on _L31_ replace the `inputArg` and `outputArg` with desired values
 4. comment out _L21-24_
 
 
@@ -79,5 +79,7 @@ To run the demo against a local VSS GraphQL server, please follow these steps:
 
 1. get the VSS data server from [GENIVI/vss-graphql](https://github.com/GENIVI/vss-graphql)
 2. follow a _setup_ to run the VSS data server locally
-3. open `VSSGraphQL.xcodeproj` 
+3. open `VSSGraphQL.xcodeproj`
 4. choose `Demo` as the target from top left and run it
+
+or after step 2, execute `swift run Demo` in repo's root dir in terminal.

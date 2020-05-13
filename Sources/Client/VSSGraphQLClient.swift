@@ -9,7 +9,7 @@
 import Foundation
 
 
-public typealias Operation = Artemis.Operation<VehicleQuery, Partial<Vehicle>>
+public typealias GraphQLOperation = Artemis.Operation<VehicleQuery, Partial<Vehicle>>
 
 
 public class VSSGraphQLClient {
@@ -17,7 +17,7 @@ public class VSSGraphQLClient {
     public let url: URL
 
 
-    public func execute(operation: Operation, completion: @escaping (Result<Partial<Vehicle>, GraphQLError>) -> Void) {
+    public func execute(operation: GraphQLOperation, completion: @escaping (Result<Partial<Vehicle>, GraphQLError>) -> Void) {
          let client = Client<VehicleQuery>(endpoint: url)
 
         client.perform(operation) { result in

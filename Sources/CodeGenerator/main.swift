@@ -10,7 +10,7 @@ import Foundation
 
 
 /*
- Generates VSS GraphQL models from it's spec, currently only works on macOS.
+ Generates VSS GraphQL models from it's schema, currently only works on macOS.
 
  Expects 2 arguments.
     -i, --input         - path to the VSS schema file
@@ -18,17 +18,20 @@ import Foundation
  */
 
 
-guard let inputArg = CommandLine.nextArg(afterFirstEncounter: "-i", "--input"),
-    let outputArg = CommandLine.nextArg(afterFirstEncounter: "-o", "--output") else {
-        fatalError("Missing required input arguments.")
-}
-
 if #available(OSX 10.15, *) {
+    // Get the arguments
+    guard let inputArg = CommandLine.nextArg(afterFirstEncounter: "-i", "--input")?.trimmedWhitespaces,
+        let outputArg = CommandLine.nextArg(afterFirstEncounter: "-o", "--output")?.trimmedWhitespaces else {
+            fatalError("Missing required input arguments.")
+    }
+
+    // Set logging options
     CodeGenerator.logOthers = false
     CodeGenerator.logWrites = false
 
+    // Try to generate the models and write them out
     do {
-        try CodeGenerator.generate(inputPath: inputArg.trimmedWhitespaces, outputPath: outputArg.trimmedWhitespaces) {
+        try CodeGenerator.generate(inputPath: inputArg, outputPath: outputArg) {
             print("- done")
             exit(EXIT_SUCCESS)
         }

@@ -16,7 +16,7 @@ let client = VSSGraphQLClient(url: url)
 
 // Create a query to fetch specific values (branches must end with a scalar),
 // "getting started guide" can be found at https://github.com/Saelyria/Artemis/blob/master/GettingStarted.md
-let op = Operation(.query, name: "demo_query_123") {
+let op = GraphQLOperation(.query, name: "demo_query_123") {
     Add<VehicleQuery, Field<Vehicle, NoArguments>>(\.vehicle) {
         Add<Vehicle, Field<VehicleIdentification?, NoArguments>>(\.vehicleIdentification) {
             Add(\.brand)
