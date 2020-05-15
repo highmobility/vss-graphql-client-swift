@@ -19,6 +19,10 @@ extension String {
     }
 
 
+    var trimmedBrackets: String {
+        trimmingCharacters(in: .init(charactersIn: "[]"))
+    }
+
     var trimmedWhitespaces: String {
         trimmingCharacters(in: .whitespacesAndNewlines)
     }

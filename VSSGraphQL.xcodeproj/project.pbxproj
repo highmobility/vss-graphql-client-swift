@@ -497,6 +497,7 @@
 		20671F01246B3B0A00435003 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F00246B3B0A00435003 /* Acceleration.swift */; };
 		20671F03246B42E600435003 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F02246B42E600435003 /* CodeGenerator.swift */; };
 		20671F05246B439500435003 /* CommandLine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671F04246B439500435003 /* CommandLine+Extensions.swift */; };
+		20EA5D07246C2E8200F5161A /* ReductionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EA5D06246C2E8200F5161A /* ReductionResult.swift */; };
 		OBJ_1071 /* VehicleQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_497 /* VehicleQuery.swift */; };
 		OBJ_1092 /* GenField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_501 /* GenField+Extensions.swift */; };
 		OBJ_1093 /* String+Converted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_502 /* String+Converted.swift */; };
@@ -1019,6 +1020,7 @@
 		20671F00246B3B0A00435003 /* Acceleration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		20671F02246B42E600435003 /* CodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGenerator.swift; sourceTree = "<group>"; };
 		20671F04246B439500435003 /* CommandLine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandLine+Extensions.swift"; sourceTree = "<group>"; };
+		20EA5D06246C2E8200F5161A /* ReductionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReductionResult.swift; sourceTree = "<group>"; };
 		"HMVssGraphQL::Client::Product" /* Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"HMVssGraphQL::CodeGenerator::Product" /* CodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = CodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		"HMVssGraphQL::Demo::Product" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1642,6 +1644,7 @@
 				OBJ_515 /* GenEntityType.swift */,
 				OBJ_516 /* GenField.swift */,
 				OBJ_517 /* OutputFile.swift */,
+				20EA5D06246C2E8200F5161A /* ReductionResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1818,6 +1821,7 @@
 				OBJ_1100 /* CaseType.swift in Sources */,
 				OBJ_1101 /* GenArgument.swift in Sources */,
 				OBJ_1102 /* GenEntity.swift in Sources */,
+				20EA5D07246C2E8200F5161A /* ReductionResult.swift in Sources */,
 				OBJ_1103 /* GenEntityType.swift in Sources */,
 				OBJ_1104 /* GenField.swift in Sources */,
 				OBJ_1105 /* OutputFile.swift in Sources */,
