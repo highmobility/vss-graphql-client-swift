@@ -3,7 +3,52 @@
 
 ## Client
 
-...
+Enables _type-safe_ creation of the GraphQL query and output of the VSS data.  
+
+The client can be built for any OS able to run _Swift 5.2_.  
+To compile the lib for a specific platform, it can be done through either _terminal_ or _Xcode_, but requires the models to be generated beforehand (if missing).  
+
+Additionally, the _Client_ can be used with _Swift Package Manager_ as a dependency in other projects.
+
+
+#### Terminal
+
+To compile the generator from terminal, please follow the steps:
+
+1. navigate to the repository's directory
+2. execute `swift build Client`
+
+
+#### Xcode
+
+To compile the client from Xcode, please follow the steps:
+
+1. open `VSSGraphQL.xcodeproj`
+2. choose _Client_ as the active target (from top left) with the desired target platform
+3. run the project to compile the lib
+
+
+#### Swift Package Manager
+
+This is the _recommended_ way to use the Client.  
+
+In order to use the Client as a dependency with SPM, there are 2 options:
+
+1. navigate to the root directory of your _swift project_
+2. open `Package.swift`
+3. add `.package(url: "git@github.com:highmobility/vss-graphql-client-swift.git", .upToNextMinor(from: "1.0.0")),` to _dependencies_
+4. add `Client` to your _target's dependencies_
+
+or the dependency can be added in Xcode:
+
+1. open your _Xcode project_
+2. open your "master" project from the left _navigation area_
+3. choose your project above the targets (to edit the project settings)
+4. select _Swift Packages_ from the top-center
+5. click the `+` button
+6. add `git@github.com:highmobility/vss-graphql-client-swift.git` as the _package repository URL_
+7. choose your _version rules_
+
 
 
 ## CodeGenerator
