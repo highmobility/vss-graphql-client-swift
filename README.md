@@ -50,7 +50,6 @@ or the dependency can be added in Xcode:
 7. choose your _version rules_
 
 
-
 ## CodeGenerator
 
 > **_NOTE:_**  Currently works on _macOS_ only.
