@@ -37,7 +37,7 @@ In order to use the Client as a dependency with SPM, there are 2 options:
 1. navigate to the root directory of your _swift project_
 2. open `Package.swift`
 3. add `.package(url: "git@github.com:highmobility/vss-graphql-client-swift.git", .upToNextMinor(from: "1.0.0")),` to _dependencies_
-4. add `VSSGraphQLClient` to your _target's dependencies_
+4. add `VSSGraphQL` to your _target's dependencies_
 
 or the dependency can be added in Xcode:
 
