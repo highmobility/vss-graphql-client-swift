@@ -531,6 +531,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20AB45CE247BBAB5009654BE /* vehicle.ts */ = {isa = PBXFileReference; explicitFileType = text.yaml; path = vehicle.ts; sourceTree = "<group>"; };
 		OBJ_10 /* CommandLine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandLine+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* CabinDoorRow3LeftShadeSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinDoorRow3LeftShadeSwitch.swift; sourceTree = "<group>"; };
 		OBJ_101 /* CabinDoorRow3LeftWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinDoorRow3LeftWindow.swift; sourceTree = "<group>"; };
@@ -1077,6 +1078,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20AB45CD247BBAB5009654BE /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				20AB45CE247BBAB5009654BE /* vehicle.ts */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
 		OBJ_15 /* Generators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1632,7 +1641,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1642,7 +1651,6 @@
 				OBJ_554 /* LICENSE */,
 				OBJ_555 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_526 /* Tests */ = {
@@ -1691,6 +1699,7 @@
 				OBJ_21 /* Misc */,
 				OBJ_24 /* Models */,
 				OBJ_31 /* Protocols */,
+				20AB45CD247BBAB5009654BE /* Schema */,
 				OBJ_33 /* main.swift */,
 			);
 			name = CodeGenerator;
@@ -1780,7 +1789,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			packageReferences = (
 				20AB45CA247BB89B009654BE /* XCRemoteSwiftPackageReference "Artemis" */,
 			);

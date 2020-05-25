@@ -50,6 +50,16 @@
             ReferencedContainer = "container:VSSGraphQL.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-o /Users/mikk/Desktop/Workspace.nosync/Source/hm-vss-graphql-client-swift/Sources/VSSGraphQLClient/Models"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-i /Users/mikk/Desktop/Workspace.nosync/Source/hm-vss-graphql-client-swift/Sources/CodeGenerator/Schema/vehicle.ts"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
