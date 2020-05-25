@@ -16,7 +16,7 @@ Additionally, the _Client_ can be used with _Swift Package Manager_ as a depende
 To compile the generator from terminal, please follow the steps:
 
 1. navigate to the repository's directory
-2. execute `swift build Client`
+2. execute `swift build VSSGraphQLClient`
 
 
 #### Xcode
@@ -24,7 +24,7 @@ To compile the generator from terminal, please follow the steps:
 To compile the client from Xcode, please follow the steps:
 
 1. open `VSSGraphQL.xcodeproj`
-2. choose _Client_ as the active target (from top left) with the desired target platform
+2. choose _VSSGraphQLClient_ as the active target (from top left) with the desired target platform
 3. run the project to compile the lib
 
 
@@ -37,7 +37,7 @@ In order to use the Client as a dependency with SPM, there are 2 options:
 1. navigate to the root directory of your _swift project_
 2. open `Package.swift`
 3. add `.package(url: "git@github.com:highmobility/vss-graphql-client-swift.git", .upToNextMinor(from: "1.0.0")),` to _dependencies_
-4. add `Client` to your _target's dependencies_
+4. add `VSSGraphQLClient` to your _target's dependencies_
 
 or the dependency can be added in Xcode:
 
@@ -48,6 +48,7 @@ or the dependency can be added in Xcode:
 5. click the `+` button
 6. add `git@github.com:highmobility/vss-graphql-client-swift.git` as the _package repository URL_
 7. choose your _version rules_
+8. add the _Client_ lib to your desired target
 
 
 ## CodeGenerator

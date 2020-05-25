@@ -5,7 +5,7 @@
 //  Created by Mikk Rätsep on 30.04.20.
 //
 
-import Client
+import VSSGraphQLClient
 import Foundation
 
 

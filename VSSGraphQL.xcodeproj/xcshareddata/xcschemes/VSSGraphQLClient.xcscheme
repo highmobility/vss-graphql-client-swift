@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "HMVssGraphQL::Client"
-               BuildableName = "Client.framework"
-               BlueprintName = "Client"
+               BlueprintIdentifier = "VSSGraphQL::VSSGraphQLClient"
+               BuildableName = "VSSGraphQLClient.framework"
+               BlueprintName = "VSSGraphQLClient"
                ReferencedContainer = "container:VSSGraphQL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "HMVssGraphQL::Client"
-            BuildableName = "Client.framework"
-            BlueprintName = "Client"
+            BlueprintIdentifier = "VSSGraphQL::VSSGraphQLClient"
+            BuildableName = "VSSGraphQLClient.framework"
+            BlueprintName = "VSSGraphQLClient"
             ReferencedContainer = "container:VSSGraphQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
