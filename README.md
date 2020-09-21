@@ -97,8 +97,8 @@ or:
 
 1. open `VSSGraphQL.xcodeproj`
 2. navigate to `Sources/CodeGenerator/main.swift`
-3. on _L31_ replace the `inputArg` and `outputArg` with desired values
-4. comment out _L21-24_
+3. on _L34_ replace the `inputArg` and `outputArg` with desired values
+4. comment out _L23-26_
 
 
 ## Demo
