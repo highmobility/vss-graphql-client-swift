@@ -3,17 +3,37 @@
 
 ## Client
 
-Enables _type-safe_ creation of the GraphQL query and output of the VSS data.  
+> **_NOTE:_**  Currently works on _iOS_ and _macOS_ only.
 
-The client can be built for any OS able to run _Swift 5.2_.  
-To compile the lib for a specific platform, it can be done through either _terminal_ or _Xcode_, but requires the models to be generated beforehand (if missing).  
+Enables automatic decoding of VSS GraphQL query, by serializing the response into pre-defined types.  
+It's based on [AutoGraph](https://github.com/remind101/AutoGraph) with a tiny wrapper and generated VSS types.
 
-Additionally, the _Client_ can be used with _Swift Package Manager_ as a dependency in other projects.
+### Usage
 
+Example of a query composed and sent to VSS GraphQL endpoint:
+
+    let operation = VSSGraphQLOperation.vehicleQuery(selectionSet: [
+        Object(name: "drivetrain", selectionSet: [
+            Object(name: "batteryManagement", selectionSet: [
+                Scalar(name: "batteryCapacity"),
+                Scalar(name: "chargingInlet"),
+                Scalar(name: "netCapacity")
+            ]),
+        ])
+    ])
+    
+    let request = VSSGraphQLRequest<Vehicle>(operation: operation, rootKeyPath: "data.vehicle")
+    let url = URL(string: "http://localhost:4000")!
+    
+    request.send(url: url) { result in
+        print(result)
+    }
+
+### Installation
 
 #### Terminal
 
-To compile the generator from terminal, please follow the steps:
+To compile the client from terminal, please follow the steps:
 
 1. navigate to the repository's directory
 2. execute `swift build VSSGraphQLClient`
@@ -36,7 +56,7 @@ In order to use the Client as a dependency with SPM, there are 2 options:
 
 1. navigate to the root directory of your _swift project_
 2. open `Package.swift`
-3. add `.package(url: "git@github.com:highmobility/vss-graphql-client-swift.git", .upToNextMinor(from: "1.0.0")),` to _dependencies_
+3. add `.package(url: "git@github.com:highmobility/vss-graphql-client-swift.git", .upToNextMinor(from: "M.m.p")),` to _dependencies_
 4. add `VSSGraphQL` to your _target's dependencies_
 
 or the dependency can be added in Xcode:
