@@ -494,9 +494,10 @@
 		206C847F24E3DE1B0015B44E /* CabinSeatRow4Pos3SwitchMassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206C829824E3DE1A0015B44E /* CabinSeatRow4Pos3SwitchMassage.swift */; };
 		206C848024E3DE1B0015B44E /* CabinDoorRow4RightShade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206C829924E3DE1A0015B44E /* CabinDoorRow4RightShade.swift */; };
 		206C848124E3DE1B0015B44E /* CabinSeatRow3Pos5Cushion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206C829A24E3DE1A0015B44E /* CabinSeatRow3Pos5Cushion.swift */; };
-		20AB45CC247BB89B009654BE /* Artemis in Frameworks */ = {isa = PBXBuildFile; productRef = 20AB45CB247BB89B009654BE /* Artemis */; };
-		OBJ_1128 /* VSSGraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_524 /* VSSGraphQLClient.swift */; };
-		OBJ_1129 /* VehicleQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_525 /* VehicleQuery.swift */; };
+		209CFD51253718250066F78D /* VSSGraphQLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209CFD50253718250066F78D /* VSSGraphQLOperation.swift */; };
+		20C5100E252C7613001076F2 /* AutoGraphQL in Frameworks */ = {isa = PBXBuildFile; productRef = 20C5100D252C7613001076F2 /* AutoGraphQL */; };
+		20C51018252C76E2001076F2 /* GraphQLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C51013252C76D3001076F2 /* GraphQLType.swift */; };
+		OBJ_1128 /* VSSGraphQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_524 /* VSSGraphQLRequest.swift */; };
 		OBJ_599 /* CommandLine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* CommandLine+Extensions.swift */; };
 		OBJ_600 /* GenField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* GenField+Extensions.swift */; };
 		OBJ_601 /* String+Converted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* String+Converted.swift */; };
@@ -507,7 +508,6 @@
 		OBJ_606 /* FilesContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* FilesContentGenerator.swift */; };
 		OBJ_607 /* GenEntitiesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* GenEntitiesGenerator.swift */; };
 		OBJ_608 /* OutputFilesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* OutputFilesGenerator.swift */; };
-		OBJ_609 /* CaseStyleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* CaseStyleOption.swift */; };
 		OBJ_610 /* CaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* CaseType.swift */; };
 		OBJ_611 /* GenArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* GenArgument.swift */; };
 		OBJ_612 /* GenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* GenEntity.swift */; };
@@ -1019,7 +1019,9 @@
 		206C829824E3DE1A0015B44E /* CabinSeatRow4Pos3SwitchMassage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow4Pos3SwitchMassage.swift; sourceTree = "<group>"; };
 		206C829924E3DE1A0015B44E /* CabinDoorRow4RightShade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinDoorRow4RightShade.swift; sourceTree = "<group>"; };
 		206C829A24E3DE1A0015B44E /* CabinSeatRow3Pos5Cushion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinSeatRow3Pos5Cushion.swift; sourceTree = "<group>"; };
+		209CFD50253718250066F78D /* VSSGraphQLOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSSGraphQLOperation.swift; sourceTree = "<group>"; };
 		20AB45CE247BBAB5009654BE /* vehicle.ts */ = {isa = PBXFileReference; explicitFileType = text.yaml; path = vehicle.ts; sourceTree = "<group>"; };
+		20C51013252C76D3001076F2 /* GraphQLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphQLType.swift; path = Protocols/GraphQLType.swift; sourceTree = "<group>"; };
 		OBJ_10 /* CommandLine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandLine+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_11 /* GenField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenField+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* String+Converted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Converted.swift"; sourceTree = "<group>"; };
@@ -1030,7 +1032,6 @@
 		OBJ_18 /* FilesContentGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesContentGenerator.swift; sourceTree = "<group>"; };
 		OBJ_19 /* GenEntitiesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntitiesGenerator.swift; sourceTree = "<group>"; };
 		OBJ_20 /* OutputFilesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFilesGenerator.swift; sourceTree = "<group>"; };
-		OBJ_22 /* CaseStyleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseStyleOption.swift; sourceTree = "<group>"; };
 		OBJ_23 /* CaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseType.swift; sourceTree = "<group>"; };
 		OBJ_25 /* GenArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenArgument.swift; sourceTree = "<group>"; };
 		OBJ_26 /* GenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenEntity.swift; sourceTree = "<group>"; };
@@ -1041,8 +1042,7 @@
 		OBJ_32 /* DocsGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocsGeneratable.swift; sourceTree = "<group>"; };
 		OBJ_33 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_35 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_524 /* VSSGraphQLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSSGraphQLClient.swift; sourceTree = "<group>"; };
-		OBJ_525 /* VehicleQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleQuery.swift; sourceTree = "<group>"; };
+		OBJ_524 /* VSSGraphQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSSGraphQLRequest.swift; sourceTree = "<group>"; };
 		OBJ_528 /* HMVssGraphQLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMVssGraphQLClientTests.swift; sourceTree = "<group>"; };
 		OBJ_529 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_554 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1050,7 +1050,7 @@
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"VSSGraphQL::CodeGenerator::Product" /* CodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = CodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		"VSSGraphQL::Demo::Product" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
-		"VSSGraphQL::VSSGraphQLClient::Product" /* VSSGraphQLClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VSSGraphQLClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"VSSGraphQL::VSSGraphQLClient::Product" /* VSSGraphQLClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VSSGraphQLClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1058,7 +1058,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				20AB45CC247BB89B009654BE /* Artemis in Frameworks */,
+				20C5100E252C7613001076F2 /* AutoGraphQL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1597,7 +1597,6 @@
 		OBJ_21 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_22 /* CaseStyleOption.swift */,
 				OBJ_23 /* CaseType.swift */,
 			);
 			path = Misc;
@@ -1637,8 +1636,9 @@
 			isa = PBXGroup;
 			children = (
 				206C7CE524E3DDC80015B44E /* Models */,
-				OBJ_524 /* VSSGraphQLClient.swift */,
-				OBJ_525 /* VehicleQuery.swift */,
+				20C51013252C76D3001076F2 /* GraphQLType.swift */,
+				209CFD50253718250066F78D /* VSSGraphQLOperation.swift */,
+				OBJ_524 /* VSSGraphQLRequest.swift */,
 			);
 			name = VSSGraphQLClient;
 			path = Sources/VSSGraphQLClient;
@@ -1770,7 +1770,7 @@
 			);
 			name = VSSGraphQLClient;
 			packageProductDependencies = (
-				20AB45CB247BB89B009654BE /* Artemis */,
+				20C5100D252C7613001076F2 /* AutoGraphQL */,
 			);
 			productName = VSSGraphQLClient;
 			productReference = "VSSGraphQL::VSSGraphQLClient::Product" /* VSSGraphQLClient.framework */;
@@ -1794,7 +1794,7 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
-				20AB45CA247BB89B009654BE /* XCRemoteSwiftPackageReference "Artemis" */,
+				20C5100C252C7613001076F2 /* XCRemoteSwiftPackageReference "AutoGraph" */,
 			);
 			productRefGroup = OBJ_548 /* Products */;
 			projectDirPath = "";
@@ -1822,7 +1822,6 @@
 				OBJ_606 /* FilesContentGenerator.swift in Sources */,
 				OBJ_607 /* GenEntitiesGenerator.swift in Sources */,
 				OBJ_608 /* OutputFilesGenerator.swift in Sources */,
-				OBJ_609 /* CaseStyleOption.swift in Sources */,
 				OBJ_610 /* CaseType.swift in Sources */,
 				OBJ_611 /* GenArgument.swift in Sources */,
 				OBJ_612 /* GenEntity.swift in Sources */,
@@ -1996,6 +1995,7 @@
 				206C835A24E3DE1A0015B44E /* CabinHVACRow2LeftAirDistribution.swift in Sources */,
 				206C834524E3DE1A0015B44E /* CabinSeatRow3Pos3.swift in Sources */,
 				206C82BD24E3DE1A0015B44E /* OBDDriveCycleStatus.swift in Sources */,
+				20C51018252C76E2001076F2 /* GraphQLType.swift in Sources */,
 				206C82F924E3DE1A0015B44E /* OBDO2Bank1Sensor4.swift in Sources */,
 				206C830424E3DE1A0015B44E /* DrivetrainBatteryManagement.swift in Sources */,
 				206C82F024E3DE1A0015B44E /* DrivetrainInternalCombustionEngineConfiguration.swift in Sources */,
@@ -2039,7 +2039,7 @@
 				206C83E924E3DE1B0015B44E /* CabinRearviewMirror.swift in Sources */,
 				206C82BE24E3DE1A0015B44E /* CabinSeatRow1Pos4SwitchSideBolster.swift in Sources */,
 				206C838824E3DE1B0015B44E /* CabinSeatRow2Pos3SwitchMassage.swift in Sources */,
-				OBJ_1128 /* VSSGraphQLClient.swift in Sources */,
+				OBJ_1128 /* VSSGraphQLRequest.swift in Sources */,
 				206C844924E3DE1B0015B44E /* CabinSeatRow4Pos1Lumbar.swift in Sources */,
 				206C82D624E3DE1A0015B44E /* CabinSeatRow4Pos4SwitchMassage.swift in Sources */,
 				206C83A524E3DE1B0015B44E /* CabinHVACRow3Right.swift in Sources */,
@@ -2124,6 +2124,7 @@
 				206C830824E3DE1A0015B44E /* BodyWindshieldRearWipingStatus.swift in Sources */,
 				206C83A824E3DE1B0015B44E /* CabinSeatRow1Pos3SideBolster.swift in Sources */,
 				206C83E424E3DE1B0015B44E /* BodyTrunk.swift in Sources */,
+				209CFD51253718250066F78D /* VSSGraphQLOperation.swift in Sources */,
 				206C838024E3DE1B0015B44E /* CabinHVACRow4Left.swift in Sources */,
 				206C830F24E3DE1A0015B44E /* CabinSeatRow4Pos2SwitchSideBolster.swift in Sources */,
 				206C83E024E3DE1B0015B44E /* CabinDoorRow2Left.swift in Sources */,
@@ -2285,7 +2286,6 @@
 				206C82E424E3DE1A0015B44E /* CabinSeatRow4Pos3SideBolster.swift in Sources */,
 				206C82C924E3DE1A0015B44E /* CabinSeatRow1Pos1SwitchMassage.swift in Sources */,
 				206C82AE24E3DE1A0015B44E /* OBDO2Bank1Sensor3.swift in Sources */,
-				OBJ_1129 /* VehicleQuery.swift in Sources */,
 				206C82F824E3DE1A0015B44E /* DrivetrainBatteryManagementStateOfCharge.swift in Sources */,
 				206C82D324E3DE1A0015B44E /* CabinSeatRow3Pos4SideBolster.swift in Sources */,
 				206C835F24E3DE1A0015B44E /* OBDCatalyst.swift in Sources */,
@@ -2477,7 +2477,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 					"@executable_path",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -2507,7 +2507,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 					"@executable_path",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -2537,7 +2537,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -2568,7 +2568,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -2626,9 +2626,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		20AB45CA247BB89B009654BE /* XCRemoteSwiftPackageReference "Artemis" */ = {
+		20C5100C252C7613001076F2 /* XCRemoteSwiftPackageReference "AutoGraph" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Saelyria/Artemis";
+			repositoryURL = "https://github.com/remind101/AutoGraph.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -2637,10 +2637,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		20AB45CB247BB89B009654BE /* Artemis */ = {
+		20C5100D252C7613001076F2 /* AutoGraphQL */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 20AB45CA247BB89B009654BE /* XCRemoteSwiftPackageReference "Artemis" */;
-			productName = Artemis;
+			package = 20C5100C252C7613001076F2 /* XCRemoteSwiftPackageReference "AutoGraph" */;
+			productName = AutoGraphQL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

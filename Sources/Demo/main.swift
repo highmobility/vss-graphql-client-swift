@@ -9,66 +9,75 @@ import VSSGraphQLClient
 import Foundation
 
 
+// Create the query,
+// note - GraphQL queries always end with a "Scalar".
+let operation = VSSGraphQLOperation.vehicleQuery(selectionSet: [
+    Object(name: "drivetrain", selectionSet: [
+        Object(name: "batteryManagement", selectionSet: [
+            Scalar(name: "batteryCapacity"),
+            Scalar(name: "chargingInlet"),
+            Scalar(name: "netCapacity")
+        ]),
+    ]),
+
+    Object(name: "vehicleIdentification", selectionSet: [
+        Scalar(name: "brand"),
+        Scalar(name: "model"),
+        Scalar(name: "vin")
+    ]),
+
+    Object(name: "cabin", selectionSet: [
+        Object(name: "door", selectionSet: [
+            Object(name: "row1", selectionSet: [
+                Object(name: "left", selectionSet: [
+                    Scalar(name: "isOpen"),
+                ]),
+            ]),
+
+            Scalar(name: "count"),
+        ]),
+    ]),
+])
+
+
+// Create the request with the "rootKeyPath" for the "Type",
+// this example for the "Vehicle".
+// GraphQL response's path always begins with "data".
+let request = VSSGraphQLRequest<Vehicle>(operation: operation, rootKeyPath: "data.vehicle")
+
+
 // Change the URL to a valid endpoint,
-// or run "VSS data server" from https://github.com/GENIVI/vss-graphql
+// or run "VSS data server" from https://github.com/highmobility/vss-graphql
 let url = URL(string: "http://localhost:4000")!
-let client = VSSGraphQLClient(url: url)
-
-// Create a query to fetch specific values (branches must end with a scalar),
-// "getting started guide" can be found at https://github.com/Saelyria/Artemis/blob/master/GettingStarted.md
-let op = GraphQLOperation(.query, name: "demo_query_123") {
-    Add<VehicleQuery, Field<Vehicle, NoArguments>>(\.vehicle) {
-        Add<Vehicle, Field<VehicleIdentification?, NoArguments>>(\.vehicleIdentification) {
-            Add(\.brand)
-            Add(\.model)
-            Add(\.vin)
-            Add(\.year)
-            Add(\.bodyType)
-        }
-
-        Add(\.travelledDistance)
-        Add(\.isMoving)
-
-        Add<Vehicle, Field<Cabin?, NoArguments>>(\.cabin) {
-            Add<Cabin?, Field<CabinDoor?, NoArguments>>(\.door) {
-                Add<CabinDoor?, Field<Int?, NoArguments>>(\.count)
-
-                Add<CabinDoor?, Field<CabinDoorRow1?, NoArguments>>(\.row1) {
-                    Add<CabinDoorRow1?, Field<CabinDoorRow1Left?, NoArguments>>(\.left) {
-                        Add<CabinDoorRow1Left?, Field<Bool?, NoArguments>>(\.isOpen)
-                    }
-                }
-            }
-        }
-    }
-}
 
 
-// Execute the operation and output the result
-client.execute(operation: op) { result in
+// Send the request towards the URL.
+request.send(url: url) { result in
     switch result {
     case .failure(let error):
         print("ERROR:", error)
 
-    case .success(let partialVehicle):
+    case .success(let vehicle):
         print()
-        print("SUCCESS:", partialVehicle)
+        print("SUCCESS:", vehicle)
 
         print()
-        print("brand:", (partialVehicle.vehicleIdentification?.brand ?? nil) as Any)
-        print("isMoving:", (partialVehicle.isMoving ?? nil) as Any)
-
-        if let model = partialVehicle.vehicleIdentification?.model ?? nil {
-            print("model:", model)
-        }
-
-        if let isOpen = partialVehicle.cabin?.door?.row1?.left?.isOpen ?? nil {
-            print("left front door open:", isOpen)
-        }
+        print("brand:", vehicle.vehicleIdentification?.brand ?? "nil")
+        print("model:", vehicle.vehicleIdentification?.model ?? "nil")
+        print("doors count:", vehicle.cabin?.door?.count ?? "nil")
+        print("left door isOpen:", vehicle.cabin?.door?.row1?.left?.isOpen ?? "nil")
+        print()
+        print("batteryCapacity", vehicle.drivetrain?.batteryManagement?.batteryCapacity ?? "nil")
+        print("chargingInlet", vehicle.drivetrain?.batteryManagement?.chargingInlet ?? "nil")
+        print("netCapacity", vehicle.drivetrain?.batteryManagement?.netCapacity ?? "nil")
+        print()
+        print("not in query, lateral acc.:", vehicle.acceleration?.lateral ?? "nil")
+        print("not in query, sensor2:", vehicle.obd?.o2?.bank1?.sensor2?.voltage ?? "nil")
     }
 
     exit(EXIT_SUCCESS)
 }
 
-// Keep the program running (until a response is received)
+
+// Keep the program running (until a response is received).
 RunLoop.main.run()

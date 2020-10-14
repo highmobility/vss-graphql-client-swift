@@ -17,15 +17,3 @@ class GenField: DocsGeneratable {
     var documentation: [String] = []
     var arguments: [GenArgument] = []
 }
-
-@available(OSX 10.15, *)
-extension GenField {
-
-    var argumentsTypeName: String {
-        guard !arguments.isEmpty else {
-            return "NoArguments"
-        }
-
-        return "\(name)Arguments".convertedToValidTypeName
-    }
-}

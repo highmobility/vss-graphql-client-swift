@@ -20,7 +20,7 @@ struct GenEntitiesGenerator {
     static func publisher(fromSpecFileContent content: String) throws -> AnyPublisher<GenEntity, Never> {
         print("- creating intermediate entities...")
 
-        return content.split(separator: "\n")
+        return content.split(separator: "\n").suffix(from: 2)
             .publisher
             .collect()
             .map { lines -> [[String]] in
@@ -50,7 +50,8 @@ struct GenEntitiesGenerator {
                         linesGroupedByEntity.append([String(line)])
                     }
                     // Once we encounter an opening curly brace, create a new 'temp entity' (i.e. string array)
-                    else if ((line.contains("{") && !isBuildingDocumentation) || line.hasPrefix(quoteMarks(3))) && entityLinesBeingAddedTo == nil {
+                    else if ((line.contains("{") && !isBuildingDocumentation) ||
+                                line.hasPrefix(quoteMarks(3))) && entityLinesBeingAddedTo == nil {
                         entityLinesBeingAddedTo = [String(line)]
                     }
                     // When we encounter the closing curly brace for an entity, add that line, add the 'temp entity' to the full
@@ -127,8 +128,6 @@ private extension GenEntitiesGenerator {
     }
 }
 
-
-// TODO: Remove
 extension String: Error {
 
 }

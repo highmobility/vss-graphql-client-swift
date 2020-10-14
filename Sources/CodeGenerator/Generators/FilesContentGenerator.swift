@@ -18,20 +18,17 @@ struct FilesContentGenerator {
         return entitiesPub
             .flatMap { entity -> AnyPublisher<[String], Never> in
                 switch entity.entityType {
-                case .enum:         return self.createSwiftLinesPub(forEnum: entity)
-                case .input:        return self.createSwiftLinesPub(forInput: entity)
-                case .interface:    return self.createSwiftLinesPub(forInterface: entity)
-                case .object:       return self.createSwiftLinesPub(forObject: entity)
-                case .scalar:       return self.createSwiftLinesPub(forScalar: entity)
-                case .schema:       fatalError()
+                case .enum:     return self.createSwiftLinesPub(forEnum: entity)
+                case .object:   return self.createSwiftLinesPub(forObject: entity)
+                case .scalar:   return self.createSwiftLinesPub(forScalar: entity)
+
+                default:
+                    fatalError("EntityType '\(entity.entityType)' is not yet supported.")
                 }
             }
-            .map {
-                $0.joinedWithNewLine()
-            }
+            .map { $0.joinedWithNewLine() }
             .map { content -> String in
                 """
-                import Artemis
                 import Foundation
 
 
@@ -60,9 +57,7 @@ private extension FilesContentGenerator {
 
                 return field.documentationLinesPub
                     .collect()
-                    .map {
-                        $0.joinedWithNewLine()
-                    }
+                    .map { $0.joinedWithNewLine() }
                     .zip(Just(caseLine))
                     .eraseToAnyPublisher()
             }
@@ -76,63 +71,9 @@ private extension FilesContentGenerator {
             }
 
         return entity.documentationLinesPub
-            .append("public enum \(entity.name.convertedToValidTypeName): String, Enum {")
+            .append("public enum \(entity.name.convertedToValidTypeName): String, GraphQLType {")
             .append(caseLines)
             .append("}")
-            .collect()
-            .eraseToAnyPublisher()
-    }
-
-    static func createSwiftLinesPub(forInput entity: GenEntity) -> AnyPublisher<[String], Never> {
-        guard entity.entityType == .input else {
-            fatalError()
-        }
-
-        let ivarLines = entity.fields
-            .publisher
-            .flatMap { field -> AnyPublisher<(String, String), Never> in
-                var fieldType = field.type.convertedToValidTypeName
-
-                if fieldType.last != "?" {
-                    fieldType += "!"
-                }
-
-                let ivarLine = "public var \(field.name.convertedToValidPropertyName): \(fieldType)"
-
-                return field.documentationLinesPub
-                    .collect()
-                    .map {
-                        $0.joinedWithNewLine()
-                    }
-                    .zip(Just(ivarLine))
-                    .eraseToAnyPublisher()
-            }
-            .map { docsLines, ivarLine in
-                docsLines.isEmpty ?
-                    ivarLine :
-                    docsLines + "\n" + ivarLine
-            }
-            .map {
-                "\n" + $0.indented(byLevel: 1)
-            }
-
-        return entity.documentationLinesPub
-            .append("public class \(entity.name.convertedToValidTypeName): Input, ObjectSchema {")
-            .append(ivarLines)
-            .append(.publicRequiredInit)
-            .collect()
-            .eraseToAnyPublisher()
-    }
-
-    static func createSwiftLinesPub(forInterface entity: GenEntity) -> AnyPublisher<[String], Never> {
-        guard entity.entityType == .interface else {
-            fatalError()
-        }
-
-        return entity.documentationLinesPub
-            .append("public class \(entity.name.convertedToValidTypeName): Interface {")
-            .append(entity.fields.ivarLinesPub)
-            .append(.publicRequiredInit)
             .collect()
             .eraseToAnyPublisher()
     }
@@ -142,23 +83,10 @@ private extension FilesContentGenerator {
             fatalError()
         }
 
-        let name = entity.name.convertedToValidTypeName
-
-        let interfaceLines = entity.interfaces
-            .publisher
-            .collect()
-            .compactMap { interfaces -> String? in
-                interfaces.isEmpty ? nil : interfaces.joined(separator: ", ")
-            }
-            .map { interfaces in
-                "\n" + "public static let implements = Interfaces(\(interfaces))".indented(byLevel: 1)
-            }
-
         return entity.documentationLinesPub
-            .append("public class \(name): Object, ObjectSchema {")
-            .append(interfaceLines)
+            .append("public struct \(entity.name.convertedToValidTypeName): GraphQLType {")
             .append(entity.fields.ivarLinesPub)
-            .append(.publicRequiredInit)
+            .append("}")
             .collect()
             .eraseToAnyPublisher()
     }
@@ -168,8 +96,9 @@ private extension FilesContentGenerator {
             fatalError()
         }
 
+        // Added scalars need de-/serialization information supplied in advance
         return entity.documentationLinesPub
-            .append("public typealias \(entity.name.convertedToValidTypeName) = String")    // TODO: umm, every scalar is a string?
+            .append("public typealias \(entity.name.convertedToValidTypeName) = String")
             .collect()
             .eraseToAnyPublisher()
     }

@@ -1,3 +1,6 @@
+import { gql } from 'apollo-server';
+
+const Vehicle = gql`
   """
   Highlevel vehicle data.
   """
@@ -7974,7 +7977,6 @@
     DC_Chademo
   }
 
-
   """
   Information on the state of charge of the vehicle's high voltage battery.
   """
@@ -9165,3 +9167,6 @@
     """
     vehicleSpecialUsage: String
   }
+`;
+
+export default Vehicle;

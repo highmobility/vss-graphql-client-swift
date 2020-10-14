@@ -17,10 +17,8 @@ extension Array where Element == GenField {
             .flatMap { field -> AnyPublisher<(String, String), Never> in
                 field.documentationLinesPub
                     .collect()
-                    .map {
-                        $0.joinedWithNewLine()
-                    }
-                    .zip(self.createArgumentsLinesPub(for: field))
+                    .map { $0.joinedWithNewLine() }
+                    .zip(self.createVarPub(for: field))
                     .eraseToAnyPublisher()
             }
             .map { docLines, ivarArgLines in
@@ -38,44 +36,11 @@ extension Array where Element == GenField {
 @available(OSX 10.15, *)
 private extension Array where Element == GenField {
 
-    func createArgumentsLinesPub(for field: GenField) -> AnyPublisher<String, Never> {
-        let argumentName = field.argumentsTypeName
+    func createVarPub(for field: GenField) -> AnyPublisher<String, Never> {
         let fieldType = field.type.convertedToValidTypeName
         let propertyName = field.name.convertedToValidPropertyName
 
-        // Handle arguments lines
-        var argumentsPub = [String]().publisher.eraseToAnyPublisher()
-
-        if !field.arguments.isEmpty {
-            let argVars = field.arguments
-                .publisher
-                .map {
-                    "public var \($0.name.convertedToValidPropertyName) = Argument<\($0.type)>(\"\($0.name)\")"
-                }
-                .map {
-                    $0.indented(byLevel: 1)
-                }
-
-            argumentsPub = argumentsPub
-                .append("\n")
-                .append("public final class \(argumentName): ArgumentList {")
-                .append(argVars)
-                .append("}")
-                .collect()
-                .map {
-                    $0.joinedWithNewLine()
-                }
-                .eraseToAnyPublisher()
-        }
-
-        // Output ivar-lines
-        return [String]().publisher
-            .append("public var \(propertyName) = Field<\(fieldType), \(argumentName)>(\"\(field.name)\")")
-            .append(argumentsPub)
-            .collect()
-            .map {
-                $0.joinedWithNewLine()
-            }
+        return Just("public var \(propertyName): \(fieldType) = nil")
             .eraseToAnyPublisher()
     }
 }

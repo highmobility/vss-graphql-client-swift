@@ -10,15 +10,6 @@ import Foundation
 
 extension String {
 
-    static var publicRequiredInit: String {
-        """
-
-            public required init() { }
-        }
-        """
-    }
-
-
     var trimmedBrackets: String {
         trimmingCharacters(in: .init(charactersIn: "[]"))
     }
