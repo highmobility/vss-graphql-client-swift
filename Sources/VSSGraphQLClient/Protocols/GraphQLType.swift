@@ -8,6 +8,14 @@
 import Foundation
 
 
-public protocol GraphQLType: Decodable, Equatable {
+public protocol GraphQLType: Decodable {
+
+}
+
+public protocol GraphQLEnumType: GraphQLType {
+
+}
+
+public protocol GraphQLObjectType: GraphQLType {
 
 }

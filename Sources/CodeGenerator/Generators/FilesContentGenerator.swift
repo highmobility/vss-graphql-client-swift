@@ -71,7 +71,7 @@ private extension FilesContentGenerator {
             }
 
         return entity.documentationLinesPub
-            .append("public enum \(entity.name.convertedToValidTypeName): String, GraphQLType {")
+            .append("public enum \(entity.name.convertedToValidTypeName): String, GraphQLEnumType {")
             .append(caseLines)
             .append("}")
             .collect()
@@ -84,8 +84,9 @@ private extension FilesContentGenerator {
         }
 
         return entity.documentationLinesPub
-            .append("public struct \(entity.name.convertedToValidTypeName): GraphQLType {")
+            .append("public struct \(entity.name.convertedToValidTypeName): GraphQLObjectType {")
             .append(entity.fields.ivarLinesPub)
+//            .append(entity.fields.scalarsDictPub)
             .append("}")
             .collect()
             .eraseToAnyPublisher()
