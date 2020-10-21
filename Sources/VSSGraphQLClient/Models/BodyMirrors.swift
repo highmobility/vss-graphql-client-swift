@@ -14,4 +14,18 @@ public struct BodyMirrors: GraphQLObjectType {
     public var `left`: BodyMirrorsLeft? = nil
 
     public var `right`: BodyMirrorsRight? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "`left`" : BodyMirrorsLeft.self,
+            "`right`" : BodyMirrorsRight.self
+        ]
+    }
 }

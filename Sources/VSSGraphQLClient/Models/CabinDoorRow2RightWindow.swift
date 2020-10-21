@@ -16,4 +16,18 @@ public struct CabinDoorRow2RightWindow: GraphQLObjectType {
 
     /// Switch controlling sliding action such as window, sunroof, or blind.
     public var `switch`: CabinDoorRow2RightWindowSwitch? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "position" : Int.self,
+            "`switch`" : CabinDoorRow2RightWindowSwitch.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

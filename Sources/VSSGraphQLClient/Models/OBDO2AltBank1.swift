@@ -18,4 +18,20 @@ public struct OBDO2AltBank1: GraphQLObjectType {
     public var sensor3: OBDO2AltBank1Sensor3? = nil
 
     public var sensor4: OBDO2AltBank1Sensor4? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "sensor1" : OBDO2AltBank1Sensor1.self,
+            "sensor2" : OBDO2AltBank1Sensor2.self,
+            "sensor3" : OBDO2AltBank1Sensor3.self,
+            "sensor4" : OBDO2AltBank1Sensor4.self
+        ]
+    }
 }

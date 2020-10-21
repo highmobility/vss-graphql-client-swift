@@ -16,4 +16,18 @@ public struct BodyWindshieldFrontWasherFluid: GraphQLObjectType {
 
     /// Low level indication for washer fluid. True = Level Low. False = Level OK.
     public var levelLow: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "level" : Int.self,
+            "levelLow" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

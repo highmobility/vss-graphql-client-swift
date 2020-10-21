@@ -14,4 +14,18 @@ public struct BodyWindshield: GraphQLObjectType {
     public var front: BodyWindshieldFront? = nil
 
     public var rear: BodyWindshieldRear? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "front" : BodyWindshieldFront.self,
+            "rear" : BodyWindshieldRear.self
+        ]
+    }
 }

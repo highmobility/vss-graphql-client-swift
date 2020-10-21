@@ -18,4 +18,20 @@ public struct BodyMirrorsRight: GraphQLObjectType {
 
     /// Mirror tilt as a percent. 0 = Center Position. 100 = Fully Upward Position. -100 = Fully Downward Position.
     public var tilt: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "pan" : Int.self,
+            "tilt" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "heating" : BodyMirrorsRightHeating.self
+        ]
+    }
 }

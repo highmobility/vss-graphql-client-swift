@@ -32,6 +32,14 @@ extension Array where Element == GenField {
             .eraseToAnyPublisher()
     }
 
+    var scalarsDictPub: AnyPublisher<String, Never> {
+        dictPub(isObject: false)
+    }
+
+    var objectsDictPub: AnyPublisher<String, Never> {
+        dictPub(isObject: true)
+    }
+
 
     private func createVarPub(for field: GenField) -> AnyPublisher<String, Never> {
         let fieldType = field.type.convertedToValidTypeName
@@ -41,32 +49,30 @@ extension Array where Element == GenField {
             .eraseToAnyPublisher()
     }
 
+    private func dictPub(isObject: Bool) -> AnyPublisher<String, Never> {
+        let varName = isObject ? "objects" : "scalars"
+        let valueType = isObject ? "GraphQLObjectType.Type" : "Any"
 
-    var scalarsDictPub: AnyPublisher<String, Never> {
-        publisher
-            .filter { !$0.isType }
-            .map {
-                "\"\($0.name.convertedToValidPropertyName)\" : \($0.type.convertedToValidTypeName).self".indented(byLevel: 2)
+        return publisher
+            .filter { $0.isType == isObject }
+            .map { "\"\($0.name.convertedToValidPropertyName)\" : \($0.type.convertedToValidTypeName.deletingOccurrences(of: "?")).self" }
+            .collect()
+            .map { $0.joined(separator: ",\n") }
+            .map { rows -> String in
+                guard !rows.isEmpty else {
+                    return "[:]".indented(byLevel: 1)
+                }
+
+
+                return """
+                    [
+                \(rows.indented(byLevel: 2))
+                    ]
+                """
             }
-            .prepend("[".indented(byLevel: 1))
-            .prepend("static var scalars: [String : Any] {")
-            .append("]".indented(byLevel: 1))
+            .prepend("\npublic static var \(varName): [String : \(valueType)] {")
             .append("}")
+            .map { $0.indented(byLevel: 1) }
             .eraseToAnyPublisher()
     }
 }
-
-
-//    static var scalars: [String : Any] {
-//        [
-//            "speed" : Float?.self,
-//            "travelledDistance" : Float?.self,
-//            "tripMeterReading" : Float?.self
-//        ]
-//    }
-//
-//    static var objects: [String : Any] {
-//        [
-//            "vehicleIdentification" : VehicleIdentification?.self
-//        ]
-//    }

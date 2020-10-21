@@ -203,7 +203,7 @@ private extension ReductionResult {
 
         if nameAndType.count > 1 {
             field.type = extractSwiftType(from: nameAndType[1])
-            field.isType = nameAndType[1].hasPrefix("Vehicle_")
+            field.isType = nameAndType[1].hasPrefix("Vehicle_") && !nameAndType[1].hasSuffix("_Enum")
         }
 
         return field

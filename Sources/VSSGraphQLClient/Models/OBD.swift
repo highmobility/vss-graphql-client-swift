@@ -205,4 +205,84 @@ public struct OBD: GraphQLObjectType {
 
     /// PID 30 - Number of warm-ups since codes cleared
     public var warmupsSinceDTCClear: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "absoluteLoad" : Int.self,
+            "acceleratorPositionD" : Int.self,
+            "acceleratorPositionE" : Int.self,
+            "acceleratorPositionF" : Int.self,
+            "airStatus" : String.self,
+            "ambientAirTemperature" : Float.self,
+            "auxInputStatus" : Bool.self,
+            "barometricPressure" : Float.self,
+            "commandedEGR" : Int.self,
+            "commandedEVAP" : Int.self,
+            "commandedEquivalenceRatio" : Float.self,
+            "controlModuleVoltage" : Float.self,
+            "coolantTemperature" : Float.self,
+            "distanceSinceDTCClear" : Float.self,
+            "distanceWithMIL" : Float.self,
+            "egrError" : Int.self,
+            "evapVaporPressure" : Float.self,
+            "evapVaporPressureAbsolute" : Float.self,
+            "evapVaporPressureAlternate" : Float.self,
+            "engineLoad" : Int.self,
+            "engineSpeed" : Float.self,
+            "ethanolPercent" : Int.self,
+            "freezeDTC" : String.self,
+            "fuelInjectionTiming" : Int.self,
+            "fuelLevel" : Int.self,
+            "fuelPressure" : Float.self,
+            "fuelRailPressureAbsolute" : Float.self,
+            "fuelRailPressureDirect" : Float.self,
+            "fuelRailPressureVac" : Float.self,
+            "fuelRate" : Float.self,
+            "fuelStatus" : String.self,
+            "fuelType" : String.self,
+            "hybridBatteryRemaining" : Int.self,
+            "intakeTemp" : Float.self,
+            "longTermFuelTrim1" : Int.self,
+            "longTermFuelTrim2" : Int.self,
+            "longTermO2Trim1" : Int.self,
+            "longTermO2Trim2" : Int.self,
+            "maf" : Int.self,
+            "map" : Float.self,
+            "maxMAF" : Float.self,
+            "oilTemperature" : Int.self,
+            "pidsA" : Float.self,
+            "pidsB" : Float.self,
+            "pidsC" : Float.self,
+            "relativeAcceleratorPosition" : Int.self,
+            "relativeThrottlePosition" : Int.self,
+            "runTime" : Float.self,
+            "runTimeMIL" : Float.self,
+            "shortTermFuelTrim1" : Int.self,
+            "shortTermFuelTrim2" : Int.self,
+            "shortTermO2Trim1" : Int.self,
+            "shortTermO2Trim2" : Int.self,
+            "speed" : Float.self,
+            "throttleActuator" : Int.self,
+            "throttlePosition" : Int.self,
+            "throttlePositionB" : Int.self,
+            "throttlePositionC" : Int.self,
+            "timeSinceDTCCleared" : Float.self,
+            "timingAdvance" : Float.self,
+            "warmupsSinceDTCClear" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "catalyst" : OBDCatalyst.self,
+            "driveCycleStatus" : OBDDriveCycleStatus.self,
+            "o2" : OBDO2.self,
+            "o2Alt" : OBDO2Alt.self,
+            "o2WR" : OBDO2WR.self,
+            "status" : OBDStatus.self
+        ]
+    }
 }

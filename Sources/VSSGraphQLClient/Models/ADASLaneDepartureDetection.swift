@@ -19,4 +19,19 @@ public struct ADASLaneDepartureDetection: GraphQLObjectType {
 
     /// Indicates if lane departure detection registered a lane departure
     public var warning: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "error" : Bool.self,
+            "isActive" : Bool.self,
+            "warning" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

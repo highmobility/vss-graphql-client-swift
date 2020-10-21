@@ -13,4 +13,17 @@ public struct BodyHorn: GraphQLObjectType {
 
     /// Horn active or inactive. True = Active. False = Inactive.
     public var isActive: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isActive" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

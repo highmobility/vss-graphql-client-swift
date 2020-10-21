@@ -13,4 +13,17 @@ public struct CabinSeatRow1Pos3SideBolster: GraphQLObjectType {
 
     /// Lumbar support inflation. 0 = Fully deflated. 255 = Fully inflated.
     public var inflation: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "inflation" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -27,4 +27,23 @@ public struct DrivetrainInternalCombustionEngine: GraphQLObjectType {
 
     /// Peak power, in newton meter, that the engine can generate.
     public var maxTorque: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "configuration" : DrivetrainInternalCombustionEngineConfiguration.self,
+            "displacement" : Int.self,
+            "fuelType" : DrivetrainInternalCombustionEngineFuelType.self,
+            "maxPower" : Int.self,
+            "maxTorque" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "engine" : DrivetrainInternalCombustionEngineEngine.self
+        ]
+    }
 }

@@ -16,4 +16,18 @@ public struct CabinSeatRow3Pos1SwitchMassage: GraphQLObjectType {
 
     /// Increase massage level switch engaged
     public var increase: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "decrease" : Bool.self,
+            "increase" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

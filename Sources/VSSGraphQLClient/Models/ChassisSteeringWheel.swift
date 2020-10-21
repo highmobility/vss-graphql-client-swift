@@ -19,4 +19,19 @@ public struct ChassisSteeringWheel: GraphQLObjectType {
 
     /// Steering wheel column tilt. 0 = Lowest position. 100 = Highest position.
     public var tilt: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "angle" : Int.self,
+            "`extension`" : Int.self,
+            "tilt" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -25,4 +25,21 @@ public struct CabinInfotainmentMediaPlayed: GraphQLObjectType {
 
     /// User Resource associated with the media
     public var uri: String? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "album" : String.self,
+            "artist" : String.self,
+            "source" : CabinInfotainmentMediaPlayedSource.self,
+            "track" : String.self,
+            "uri" : String.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

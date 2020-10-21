@@ -13,4 +13,17 @@ public struct BodyHood: GraphQLObjectType {
 
     /// hood open or closed. True = Open. False = Closed
     public var isOpen: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isOpen" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

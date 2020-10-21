@@ -16,4 +16,19 @@ public struct CabinInfotainment: GraphQLObjectType {
     public var media: CabinInfotainmentMedia? = nil
 
     public var navigation: CabinInfotainmentNavigation? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "hmi" : CabinInfotainmentHMI.self,
+            "media" : CabinInfotainmentMedia.self,
+            "navigation" : CabinInfotainmentNavigation.self
+        ]
+    }
 }

@@ -43,4 +43,27 @@ public struct DrivetrainFuelSystem: GraphQLObjectType {
 
     /// Time elapsed since start in seconds.
     public var timeSinceStart: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "averageConsumption" : Float.self,
+            "consumptionSinceStart" : Float.self,
+            "engineStopStartEnabled" : Bool.self,
+            "fuelType" : DrivetrainFuelSystemFuelType.self,
+            "hybridType" : DrivetrainFuelSystemHybridType.self,
+            "instantConsumption" : Float.self,
+            "level" : Int.self,
+            "lowFuelLevel" : Bool.self,
+            "range" : Float.self,
+            "tankCapacity" : Int.self,
+            "timeSinceStart" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

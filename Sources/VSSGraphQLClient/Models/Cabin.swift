@@ -30,4 +30,26 @@ public struct Cabin: GraphQLObjectType {
     public var steeringWheel: CabinSteeringWheel? = nil
 
     public var sunroof: CabinSunroof? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "convertible" : CabinConvertible.self,
+            "door" : CabinDoor.self,
+            "hvac" : CabinHVAC.self,
+            "infotainment" : CabinInfotainment.self,
+            "lights" : CabinLights.self,
+            "rearShade" : CabinRearShade.self,
+            "rearviewMirror" : CabinRearviewMirror.self,
+            "seat" : CabinSeat.self,
+            "steeringWheel" : CabinSteeringWheel.self,
+            "sunroof" : CabinSunroof.self
+        ]
+    }
 }

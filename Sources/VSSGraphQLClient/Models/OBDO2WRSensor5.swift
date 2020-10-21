@@ -16,4 +16,18 @@ public struct OBDO2WRSensor5: GraphQLObjectType {
 
     /// PID 28 - Lambda voltage for wide range/band oxygen sensor 5
     public var voltage: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "current" : Float.self,
+            "voltage" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

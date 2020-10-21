@@ -19,4 +19,19 @@ public struct Acceleration: GraphQLObjectType {
 
     /// Vehicle acceleration in Z (vertical acceleration).
     public var vertical: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "lateral" : Float.self,
+            "longitudinal" : Float.self,
+            "vertical" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

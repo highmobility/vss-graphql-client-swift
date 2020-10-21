@@ -19,4 +19,19 @@ public struct AngularVelocity: GraphQLObjectType {
 
     /// Vehicle rotation rate along Z (vertical).
     public var yaw: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "pitch" : Int.self,
+            "roll" : Int.self,
+            "yaw" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

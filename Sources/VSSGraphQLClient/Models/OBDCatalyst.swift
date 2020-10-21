@@ -14,4 +14,18 @@ public struct OBDCatalyst: GraphQLObjectType {
     public var bank1: OBDCatalystBank1? = nil
 
     public var bank2: OBDCatalystBank2? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "bank1" : OBDCatalystBank1.self,
+            "bank2" : OBDCatalystBank2.self
+        ]
+    }
 }

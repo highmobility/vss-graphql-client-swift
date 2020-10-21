@@ -21,4 +21,22 @@ public struct CabinDoor: GraphQLObjectType {
     public var row3: CabinDoorRow3? = nil
 
     public var row4: CabinDoorRow4? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "count" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "row1" : CabinDoorRow1.self,
+            "row2" : CabinDoorRow2.self,
+            "row3" : CabinDoorRow3.self,
+            "row4" : CabinDoorRow4.self
+        ]
+    }
 }

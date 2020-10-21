@@ -22,4 +22,22 @@ public struct Drivetrain: GraphQLObjectType {
     public var internalCombustionEngine: DrivetrainInternalCombustionEngine? = nil
 
     public var transmission: DrivetrainTransmission? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "batteryManagement" : DrivetrainBatteryManagement.self,
+            "electricMotor" : DrivetrainElectricMotor.self,
+            "fuelCell" : DrivetrainFuelCell.self,
+            "fuelSystem" : DrivetrainFuelSystem.self,
+            "internalCombustionEngine" : DrivetrainInternalCombustionEngine.self,
+            "transmission" : DrivetrainTransmission.self
+        ]
+    }
 }

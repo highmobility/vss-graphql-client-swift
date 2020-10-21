@@ -64,4 +64,34 @@ public struct VehicleIdentification: GraphQLObjectType {
 
     /// Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school.
     public var vehicleSpecialUsage: String? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "acrissCode" : String.self,
+            "brand" : String.self,
+            "model" : String.self,
+            "vin" : String.self,
+            "wmi" : String.self,
+            "year" : Int.self,
+            "bodyType" : String.self,
+            "dateVehicleFirstRegistered" : String.self,
+            "knownVehicleDamages" : String.self,
+            "meetsEmissionStandard" : String.self,
+            "productionDate" : String.self,
+            "purchaseDate" : String.self,
+            "vehicleConfiguration" : String.self,
+            "vehicleInteriorColor" : String.self,
+            "vehicleInteriorType" : String.self,
+            "vehicleModelDate" : String.self,
+            "vehicleSeatingCapacity" : Int.self,
+            "vehicleSpecialUsage" : String.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

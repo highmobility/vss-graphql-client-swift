@@ -16,4 +16,18 @@ public struct CabinInfotainmentNavigationDestinationSet: GraphQLObjectType {
 
     /// Longitude of destination
     public var longitude: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "latitude" : Float.self,
+            "longitude" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -43,4 +43,28 @@ public struct DrivetrainBatteryManagement: GraphQLObjectType {
 
     /// Information on the state of charge of the vehicle's high voltage battery
     public var stateOfCharge: DrivetrainBatteryManagementStateOfCharge? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "batteryCapacity" : Int.self,
+            "batteryTemperature" : Float.self,
+            "chargingInlet" : DrivetrainBatteryManagementChargingInlet.self,
+            "lowBatteryLevel" : Bool.self,
+            "grossCapacity" : Int.self,
+            "netCapacity" : Int.self,
+            "nominalVoltage" : Int.self,
+            "referentVoltage" : Int.self,
+            "accumulatedChargedEnergy" : Float.self,
+            "accumulatedConsumedEnergy" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "stateOfCharge" : DrivetrainBatteryManagementStateOfCharge.self
+        ]
+    }
 }

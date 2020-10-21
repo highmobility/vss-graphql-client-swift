@@ -23,4 +23,22 @@ public struct CabinDoorRow1Left: GraphQLObjectType {
     public var shade: CabinDoorRow1LeftShade? = nil
 
     public var window: CabinDoorRow1LeftWindow? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isChildLockActive" : Bool.self,
+            "isLocked" : Bool.self,
+            "isOpen" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "shade" : CabinDoorRow1LeftShade.self,
+            "window" : CabinDoorRow1LeftWindow.self
+        ]
+    }
 }

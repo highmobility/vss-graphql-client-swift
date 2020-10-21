@@ -16,4 +16,19 @@ public struct BodyWindshieldFront: GraphQLObjectType {
     public var washerFluid: BodyWindshieldFrontWasherFluid? = nil
 
     public var wiping: BodyWindshieldFrontWiping? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "heating" : BodyWindshieldFrontHeating.self,
+            "washerFluid" : BodyWindshieldFrontWasherFluid.self,
+            "wiping" : BodyWindshieldFrontWiping.self
+        ]
+    }
 }

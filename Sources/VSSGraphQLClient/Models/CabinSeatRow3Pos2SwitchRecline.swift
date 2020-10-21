@@ -16,4 +16,18 @@ public struct CabinSeatRow3Pos2SwitchRecline: GraphQLObjectType {
 
     /// Seatback recline forward switch engaged
     public var forward: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "backward" : Bool.self,
+            "forward" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -18,4 +18,10 @@ public extension VSSGraphQLOperation {
             Object(name: "vehicle", selectionSet: selectionSet)
         ])
     }
+
+    static func vehicleQuery(selectionTypes: [SelectionType], name: String = "VehicleQuery") -> VSSGraphQLOperation {
+        VSSGraphQLOperation(type: .query, name: name, selectionSet: [
+            Object(name: "vehicle", selectionSet: selectionTypes)
+        ])
+    }
 }

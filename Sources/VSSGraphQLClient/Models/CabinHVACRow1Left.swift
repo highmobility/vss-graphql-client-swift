@@ -19,4 +19,19 @@ public struct CabinHVACRow1Left: GraphQLObjectType {
 
     /// Temperature
     public var temperature: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "airDistribution" : CabinHVACRow1LeftAirDistribution.self,
+            "fanSpeed" : Int.self,
+            "temperature" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

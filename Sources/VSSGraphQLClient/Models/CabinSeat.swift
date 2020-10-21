@@ -39,4 +39,28 @@ public struct CabinSeat: GraphQLObjectType {
 
     /// Number of seat rows in vehicle
     public var rowCount: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "driverPosition" : Int.self,
+            "row1PosCount" : Int.self,
+            "row2PosCount" : Int.self,
+            "row3PosCount" : Int.self,
+            "row4PosCount" : Int.self,
+            "row5PosCount" : Int.self,
+            "rowCount" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "row1" : CabinSeatRow1.self,
+            "row2" : CabinSeatRow2.self,
+            "row3" : CabinSeatRow3.self,
+            "row4" : CabinSeatRow4.self
+        ]
+    }
 }

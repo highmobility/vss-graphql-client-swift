@@ -22,4 +22,20 @@ public struct ADASObstacleDetectionDistanceToObject: GraphQLObjectType {
 
     /// Rear right distance to object in meters
     public var rearRight: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "frontLeft" : Int.self,
+            "frontRight" : Int.self,
+            "rearLeft" : Int.self,
+            "rearRight" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -18,4 +18,6 @@ public protocol GraphQLEnumType: GraphQLType {
 
 public protocol GraphQLObjectType: GraphQLType {
 
+    static var scalars: [String : Any] { get }
+    static var objects: [String : GraphQLObjectType.Type] { get }
 }

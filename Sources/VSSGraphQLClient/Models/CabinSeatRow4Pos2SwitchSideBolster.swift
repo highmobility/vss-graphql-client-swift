@@ -16,4 +16,18 @@ public struct CabinSeatRow4Pos2SwitchSideBolster: GraphQLObjectType {
 
     /// Lumbar inflation switch engaged
     public var inflate: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "deflate" : Bool.self,
+            "inflate" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

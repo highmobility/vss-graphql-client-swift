@@ -14,4 +14,18 @@ public struct OBDO2: GraphQLObjectType {
     public var bank1: OBDO2Bank1? = nil
 
     public var bank2: OBDO2Bank2? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "bank1" : OBDO2Bank1.self,
+            "bank2" : OBDO2Bank2.self
+        ]
+    }
 }

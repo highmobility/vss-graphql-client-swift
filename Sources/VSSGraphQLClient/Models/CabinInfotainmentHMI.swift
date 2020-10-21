@@ -34,4 +34,24 @@ public struct CabinInfotainmentHMI: GraphQLObjectType {
 
     /// Time format used in the current HMI
     public var timeFormat: CabinInfotainmentHMITimeFormat? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "currentLanguage" : String.self,
+            "dateFormat" : CabinInfotainmentHMIDateFormat.self,
+            "dayNightMode" : CabinInfotainmentHMIDayNightMode.self,
+            "distanceUnit" : CabinInfotainmentHMIDistanceUnit.self,
+            "evEconomyUnits" : CabinInfotainmentHMIEVEconomyUnits.self,
+            "fuelEconomyUnits" : CabinInfotainmentHMIFuelEconomyUnits.self,
+            "temperatureUnit" : CabinInfotainmentHMITemperatureUnit.self,
+            "timeFormat" : CabinInfotainmentHMITimeFormat.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

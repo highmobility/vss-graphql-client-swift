@@ -24,4 +24,22 @@ public struct CabinInfotainmentMedia: GraphQLObjectType {
 
     /// Current Media Volume
     public var volume: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "action" : CabinInfotainmentMediaAction.self,
+            "declinedURI" : String.self,
+            "selectedURI" : String.self,
+            "volume" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "played" : CabinInfotainmentMediaPlayed.self
+        ]
+    }
 }

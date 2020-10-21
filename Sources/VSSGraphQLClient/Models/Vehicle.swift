@@ -70,4 +70,40 @@ public struct Vehicle: GraphQLObjectType {
     public var tripMeterReading: Float? = nil
 
     public var vehicleIdentification: VehicleIdentification? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "accelerationTime" : Int.self,
+            "ambientAirTemperature" : Float.self,
+            "averageSpeed" : Float.self,
+            "cargoVolume" : Int.self,
+            "driveTime" : Float.self,
+            "emissionsCO2" : Int.self,
+            "idleTime" : Float.self,
+            "ignitionOffTime" : Float.self,
+            "ignitionOnTime" : Float.self,
+            "isMoving" : Bool.self,
+            "roofLoad" : Int.self,
+            "speed" : Float.self,
+            "travelledDistance" : Float.self,
+            "tripMeterReading" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "adas" : ADAS.self,
+            "acceleration" : Acceleration.self,
+            "angularVelocity" : AngularVelocity.self,
+            "body" : Body.self,
+            "cabin" : Cabin.self,
+            "chassis" : Chassis.self,
+            "drivetrain" : Drivetrain.self,
+            "obd" : OBD.self,
+            "vehicleIdentification" : VehicleIdentification.self
+        ]
+    }
 }

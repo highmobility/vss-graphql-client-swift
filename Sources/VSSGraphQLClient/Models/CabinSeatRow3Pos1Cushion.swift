@@ -16,4 +16,18 @@ public struct CabinSeatRow3Pos1Cushion: GraphQLObjectType {
 
     /// Forward length of cushion (leg support). 0 = Rearmost. 500 = Forwardmost.
     public var length: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "height" : Int.self,
+            "length" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -28,4 +28,22 @@ public struct CabinInfotainmentNavigationCurrentLocation: GraphQLObjectType {
 
     /// Vehicle speed, as sensed by the GPS receiver.
     public var speed: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "accuracy" : Float.self,
+            "altitude" : Float.self,
+            "heading" : Float.self,
+            "latitude" : Float.self,
+            "longitude" : Float.self,
+            "speed" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -18,4 +18,20 @@ public struct ADASObstacleDetection: GraphQLObjectType {
 
     /// Indicates if obstacle sensor system is enabled. True = Enabled. False = Disabled.
     public var isActive: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "error" : Bool.self,
+            "isActive" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "distanceToObject" : ADASObstacleDetectionDistanceToObject.self
+        ]
+    }
 }

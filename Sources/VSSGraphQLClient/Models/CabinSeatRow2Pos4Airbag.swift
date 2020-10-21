@@ -13,4 +13,17 @@ public struct CabinSeatRow2Pos4Airbag: GraphQLObjectType {
 
     /// Airbag deployment status. True = Airbag deployed. False = Airbag not deployed.
     public var isDeployed: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isDeployed" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

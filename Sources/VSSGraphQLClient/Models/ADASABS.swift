@@ -19,4 +19,19 @@ public struct ADASABS: GraphQLObjectType {
 
     /// Indicates if ABS is currently regulating brake pressure. True = Engaged. False = Not Engaged.
     public var isEngaged: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "error" : Bool.self,
+            "isActive" : Bool.self,
+            "isEngaged" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

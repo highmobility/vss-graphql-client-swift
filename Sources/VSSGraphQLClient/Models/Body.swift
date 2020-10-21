@@ -30,4 +30,26 @@ public struct Body: GraphQLObjectType {
     public var trunk: BodyTrunk? = nil
 
     public var windshield: BodyWindshield? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "bodyType" : String.self,
+            "refuelPosition" : BodyRefuelPosition.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "hood" : BodyHood.self,
+            "horn" : BodyHorn.self,
+            "lights" : BodyLights.self,
+            "mirrors" : BodyMirrors.self,
+            "raindetection" : BodyRaindetection.self,
+            "trunk" : BodyTrunk.self,
+            "windshield" : BodyWindshield.self
+        ]
+    }
 }

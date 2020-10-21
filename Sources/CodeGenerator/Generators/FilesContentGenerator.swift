@@ -86,7 +86,13 @@ private extension FilesContentGenerator {
         return entity.documentationLinesPub
             .append("public struct \(entity.name.convertedToValidTypeName): GraphQLObjectType {")
             .append(entity.fields.ivarLinesPub)
-//            .append(entity.fields.scalarsDictPub)
+            .append("""
+
+
+                // MARK: GraphQLObjectType
+            """)
+            .append(entity.fields.scalarsDictPub)
+            .append(entity.fields.objectsDictPub)
             .append("}")
             .collect()
             .eraseToAnyPublisher()

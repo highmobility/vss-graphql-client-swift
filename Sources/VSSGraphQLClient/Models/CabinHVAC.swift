@@ -33,4 +33,26 @@ public struct CabinHVAC: GraphQLObjectType {
     public var row3: CabinHVACRow3? = nil
 
     public var row4: CabinHVACRow4? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "ambientAirTemperature" : Float.self,
+            "isAirConditioningActive" : Bool.self,
+            "isFrontDefrosterActive" : Bool.self,
+            "isRearDefrosterActive" : Bool.self,
+            "isRecirculationActive" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "row1" : CabinHVACRow1.self,
+            "row2" : CabinHVACRow2.self,
+            "row3" : CabinHVACRow3.self,
+            "row4" : CabinHVACRow4.self
+        ]
+    }
 }

@@ -13,4 +13,17 @@ public struct ChassisParkingBrake: GraphQLObjectType {
 
     /// Parking brake status. True = Parking Brake is Engaged. False = Parking Brake is not Engaged.
     public var isEngaged: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isEngaged" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

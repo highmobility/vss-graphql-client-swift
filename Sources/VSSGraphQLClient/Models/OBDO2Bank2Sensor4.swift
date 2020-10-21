@@ -13,4 +13,17 @@ public struct OBDO2Bank2Sensor4: GraphQLObjectType {
 
     /// PID 1B - Sensor voltage
     public var voltage: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "voltage" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

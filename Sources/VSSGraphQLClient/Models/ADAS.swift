@@ -22,4 +22,22 @@ public struct ADAS: GraphQLObjectType {
     public var obstacleDetection: ADASObstacleDetection? = nil
 
     public var tcs: ADASTCS? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "abs" : ADASABS.self,
+            "cruiseControl" : ADASCruiseControl.self,
+            "esc" : ADASESC.self,
+            "laneDepartureDetection" : ADASLaneDepartureDetection.self,
+            "obstacleDetection" : ADASObstacleDetection.self,
+            "tcs" : ADASTCS.self
+        ]
+    }
 }

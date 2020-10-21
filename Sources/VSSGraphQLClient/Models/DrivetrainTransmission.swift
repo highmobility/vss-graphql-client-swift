@@ -40,4 +40,26 @@ public struct DrivetrainTransmission: GraphQLObjectType {
 
     /// Transmission type.
     public var type: DrivetrainTransmissionType? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "clutchWear" : Int.self,
+            "driveType" : DrivetrainTransmissionDriveType.self,
+            "gear" : Int.self,
+            "gearChangeMode" : DrivetrainTransmissionGearChangeMode.self,
+            "gearCount" : Int.self,
+            "performanceMode" : DrivetrainTransmissionPerformanceMode.self,
+            "speed" : Float.self,
+            "temperature" : Int.self,
+            "travelledDistance" : Float.self,
+            "type" : DrivetrainTransmissionType.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

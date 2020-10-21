@@ -14,4 +14,18 @@ public struct CabinDoorRow1: GraphQLObjectType {
     public var `left`: CabinDoorRow1Left? = nil
 
     public var `right`: CabinDoorRow1Right? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "`left`" : CabinDoorRow1Left.self,
+            "`right`" : CabinDoorRow1Right.self
+        ]
+    }
 }

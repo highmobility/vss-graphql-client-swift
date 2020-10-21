@@ -13,4 +13,17 @@ public struct BodyMirrorsLeftHeating: GraphQLObjectType {
 
     /// Mirror Heater on or off. True = Heater On. False = Heater Off.
     public var status: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "status" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

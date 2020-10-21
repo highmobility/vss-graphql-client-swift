@@ -13,4 +13,17 @@ public struct CabinSteeringWheel: GraphQLObjectType {
 
     /// Position of the steering wheel inside the cabin
     public var position: CabinSteeringWheelPosition? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "position" : CabinSteeringWheelPosition.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -40,4 +40,29 @@ public struct CabinSeatRow2Pos4Switch: GraphQLObjectType {
 
     /// Warmer switch for Seat heater
     public var warmer: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "backward" : Bool.self,
+            "cooler" : Bool.self,
+            "down" : Bool.self,
+            "forward" : Bool.self,
+            "up" : Bool.self,
+            "warmer" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "cushion" : CabinSeatRow2Pos4SwitchCushion.self,
+            "headRestraint" : CabinSeatRow2Pos4SwitchHeadRestraint.self,
+            "lumbar" : CabinSeatRow2Pos4SwitchLumbar.self,
+            "massage" : CabinSeatRow2Pos4SwitchMassage.self,
+            "recline" : CabinSeatRow2Pos4SwitchRecline.self,
+            "sideBolster" : CabinSeatRow2Pos4SwitchSideBolster.self
+        ]
+    }
 }

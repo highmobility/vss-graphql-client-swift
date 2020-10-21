@@ -13,4 +13,17 @@ public struct ChassisBrake: GraphQLObjectType {
 
     /// Brake pedal position as percent. 0 = Not depressed. 100 = Fully depressed.
     public var pedalPosition: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "pedalPosition" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

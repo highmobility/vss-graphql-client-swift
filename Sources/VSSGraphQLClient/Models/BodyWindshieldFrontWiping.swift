@@ -13,4 +13,17 @@ public struct BodyWindshieldFrontWiping: GraphQLObjectType {
 
     /// Front wiper status
     public var status: BodyWindshieldFrontWipingStatus? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "status" : BodyWindshieldFrontWipingStatus.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -16,4 +16,18 @@ public struct CabinSeatRow2Pos2SwitchHeadRestraint: GraphQLObjectType {
 
     /// Head restraint up switch engaged
     public var up: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "down" : Bool.self,
+            "up" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -16,4 +16,18 @@ public struct BodyTrunk: GraphQLObjectType {
 
     /// Trunk open or closed. True = Open. False = Closed
     public var isOpen: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isLocked" : Bool.self,
+            "isOpen" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

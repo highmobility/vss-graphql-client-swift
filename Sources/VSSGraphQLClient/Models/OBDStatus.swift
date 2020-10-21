@@ -19,4 +19,19 @@ public struct OBDStatus: GraphQLObjectType {
 
     /// Malfunction Indicator Light (MIL) False = Off, True = On
     public var mil: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "dtcCount" : Float.self,
+            "ignitionType" : OBDStatusIgnitionType.self,
+            "mil" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

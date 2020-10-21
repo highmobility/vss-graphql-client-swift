@@ -40,4 +40,29 @@ public struct CabinSeatRow2Pos5: GraphQLObjectType {
     public var sideBolster: CabinSeatRow2Pos5SideBolster? = nil
 
     public var `switch`: CabinSeatRow2Pos5Switch? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "hasPassenger" : Bool.self,
+            "heating" : Int.self,
+            "isBelted" : Bool.self,
+            "massage" : Int.self,
+            "position" : Int.self,
+            "recline" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "airbag" : CabinSeatRow2Pos5Airbag.self,
+            "cushion" : CabinSeatRow2Pos5Cushion.self,
+            "headRestraint" : CabinSeatRow2Pos5HeadRestraint.self,
+            "lumbar" : CabinSeatRow2Pos5Lumbar.self,
+            "sideBolster" : CabinSeatRow2Pos5SideBolster.self,
+            "`switch`" : CabinSeatRow2Pos5Switch.self
+        ]
+    }
 }

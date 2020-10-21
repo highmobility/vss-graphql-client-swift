@@ -16,4 +16,18 @@ public struct OBDCatalystBank1: GraphQLObjectType {
 
     /// PID 3E - Catalyst temperature from bank 1, sensor 2
     public var temperature2: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "temperature1" : Float.self,
+            "temperature2" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

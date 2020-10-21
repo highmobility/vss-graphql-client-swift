@@ -22,4 +22,20 @@ public struct ChassisAxleRow2WheelLeftBrake: GraphQLObjectType {
 
     /// Brake pad wear as percent. 0 = No Wear. 100 = Worn.
     public var padWear: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "brakesWorn" : Bool.self,
+            "fluidLevel" : Int.self,
+            "fluidLevelLow" : Bool.self,
+            "padWear" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

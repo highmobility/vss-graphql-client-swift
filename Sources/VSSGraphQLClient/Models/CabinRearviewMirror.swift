@@ -13,4 +13,17 @@ public struct CabinRearviewMirror: GraphQLObjectType {
 
     /// Dimming level of rearview mirror. 0 = undimmed. 100 = fully dimmed
     public var dimmingLevel: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "dimmingLevel" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

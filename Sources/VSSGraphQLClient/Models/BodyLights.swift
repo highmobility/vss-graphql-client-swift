@@ -43,4 +43,27 @@ public struct BodyLights: GraphQLObjectType {
 
     /// Are running lights on
     public var isRunningOn: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isBackupOn" : Bool.self,
+            "isBrakeOn" : Bool.self,
+            "isFrontFogOn" : Bool.self,
+            "isHazardOn" : Bool.self,
+            "isHighBeamOn" : Bool.self,
+            "isLeftIndicatorOn" : Bool.self,
+            "isLowBeamOn" : Bool.self,
+            "isParkingOn" : Bool.self,
+            "isRearFogOn" : Bool.self,
+            "isRightIndicatorOn" : Bool.self,
+            "isRunningOn" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

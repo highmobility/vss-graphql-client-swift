@@ -13,4 +13,17 @@ public struct BodyRaindetection: GraphQLObjectType {
 
     /// Rain intensity. 0 = Dry, No Rain. 100 = Covered.
     public var intensity: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "intensity" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

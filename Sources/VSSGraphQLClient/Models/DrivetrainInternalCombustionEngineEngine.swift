@@ -40,4 +40,26 @@ public struct DrivetrainInternalCombustionEngineEngine: GraphQLObjectType {
 
     /// Current engine torque.
     public var torque: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "ambientAirTemperature" : Float.self,
+            "ect" : Int.self,
+            "eop" : Int.self,
+            "eot" : Int.self,
+            "maf" : Int.self,
+            "map" : Int.self,
+            "power" : Int.self,
+            "speed" : Int.self,
+            "tps" : Int.self,
+            "torque" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

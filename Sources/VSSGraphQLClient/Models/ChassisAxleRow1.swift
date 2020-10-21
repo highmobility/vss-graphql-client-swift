@@ -27,4 +27,23 @@ public struct ChassisAxleRow1: GraphQLObjectType {
 
     /// Width of wheels (without tires), in inches, as per ETRO / TRA standard.
     public var wheelWidth: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "tireDiameter" : Int.self,
+            "tireWidth" : Int.self,
+            "wheelCount" : Int.self,
+            "wheelDiameter" : Int.self,
+            "wheelWidth" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "wheel" : ChassisAxleRow1Wheel.self
+        ]
+    }
 }

@@ -46,4 +46,31 @@ public struct Chassis: GraphQLObjectType {
 
     /// Overall vehicle width, in mm.
     public var width: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "curbWeight" : Int.self,
+            "grossWeight" : Int.self,
+            "height" : Int.self,
+            "length" : Int.self,
+            "towWeight" : Int.self,
+            "track" : Int.self,
+            "wheelbase" : Int.self,
+            "width" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "accelerator" : ChassisAccelerator.self,
+            "axle" : ChassisAxle.self,
+            "brake" : ChassisBrake.self,
+            "parkingBrake" : ChassisParkingBrake.self,
+            "steeringWheel" : ChassisSteeringWheel.self,
+            "trailer" : ChassisTrailer.self
+        ]
+    }
 }

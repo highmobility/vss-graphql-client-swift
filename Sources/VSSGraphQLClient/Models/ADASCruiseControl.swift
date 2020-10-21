@@ -19,4 +19,19 @@ public struct ADASCruiseControl: GraphQLObjectType {
 
     /// Set cruise control speed in kilometers per hour
     public var speedSet: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "error" : Bool.self,
+            "isActive" : Bool.self,
+            "speedSet" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

@@ -13,4 +13,17 @@ public struct BodyWindshieldFrontHeating: GraphQLObjectType {
 
     /// Front windshield heater status. 0 - off, 1 - on
     public var status: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "status" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

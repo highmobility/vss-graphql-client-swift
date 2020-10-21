@@ -14,4 +14,18 @@ public struct ChassisAxleRow1Wheel: GraphQLObjectType {
     public var `left`: ChassisAxleRow1WheelLeft? = nil
 
     public var `right`: ChassisAxleRow1WheelRight? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "`left`" : ChassisAxleRow1WheelLeft.self,
+            "`right`" : ChassisAxleRow1WheelRight.self
+        ]
+    }
 }

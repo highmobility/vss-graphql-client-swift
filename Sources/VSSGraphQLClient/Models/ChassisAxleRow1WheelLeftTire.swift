@@ -19,4 +19,19 @@ public struct ChassisAxleRow1WheelLeftTire: GraphQLObjectType {
 
     /// Tire temperature in Celsius.
     public var temperature: Float? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "pressure" : Int.self,
+            "pressureLow" : Bool.self,
+            "temperature" : Float.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

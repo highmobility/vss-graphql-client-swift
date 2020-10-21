@@ -22,4 +22,20 @@ public struct CabinSeatRow3Pos3SwitchCushion: GraphQLObjectType {
 
     /// Seat cushion up switch engaged
     public var up: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "backward" : Bool.self,
+            "down" : Bool.self,
+            "forward" : Bool.self,
+            "up" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

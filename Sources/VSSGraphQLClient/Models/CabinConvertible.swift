@@ -13,4 +13,17 @@ public struct CabinConvertible: GraphQLObjectType {
 
     /// Roof status on convertible vehicles
     public var status: CabinConvertibleStatus? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "status" : CabinConvertibleStatus.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

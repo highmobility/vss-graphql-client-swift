@@ -22,4 +22,20 @@ public struct CabinSeatRow2Pos1SwitchLumbar: GraphQLObjectType {
 
     /// Lumbar up switch engaged
     public var up: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "deflate" : Bool.self,
+            "down" : Bool.self,
+            "inflate" : Bool.self,
+            "up" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

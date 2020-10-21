@@ -19,4 +19,19 @@ public struct DrivetrainBatteryManagementStateOfCharge: GraphQLObjectType {
 
     /// Target state of charge set (eg. by customer; as a percentage between 0% - 100%)
     public var target: Int? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "current" : Float.self,
+            "displayed" : Float.self,
+            "target" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

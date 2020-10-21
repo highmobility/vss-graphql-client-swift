@@ -33,4 +33,26 @@ public struct CabinLights: GraphQLObjectType {
     public var row3: CabinLightsRow3? = nil
 
     public var row4: CabinLightsRow4? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "ambientLight" : Int.self,
+            "isDomeOn" : Bool.self,
+            "isGloveBoxOn" : Bool.self,
+            "isTrunkOn" : Bool.self,
+            "lightIntensity" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "row1" : CabinLightsRow1.self,
+            "row2" : CabinLightsRow2.self,
+            "row3" : CabinLightsRow3.self,
+            "row4" : CabinLightsRow4.self
+        ]
+    }
 }

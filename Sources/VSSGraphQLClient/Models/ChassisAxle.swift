@@ -17,4 +17,20 @@ public struct ChassisAxle: GraphQLObjectType {
     public var row1: ChassisAxleRow1? = nil
 
     public var row2: ChassisAxleRow2? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "count" : Int.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "row1" : ChassisAxleRow1.self,
+            "row2" : ChassisAxleRow2.self
+        ]
+    }
 }

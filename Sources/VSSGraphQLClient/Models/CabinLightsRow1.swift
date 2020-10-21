@@ -17,4 +17,20 @@ public struct CabinLightsRow1: GraphQLObjectType {
     public var `left`: CabinLightsRow1Left? = nil
 
     public var `right`: CabinLightsRow1Right? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isSharedOn" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "`left`" : CabinLightsRow1Left.self,
+            "`right`" : CabinLightsRow1Right.self
+        ]
+    }
 }

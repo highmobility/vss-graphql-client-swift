@@ -14,4 +14,18 @@ public struct CabinInfotainmentNavigation: GraphQLObjectType {
     public var currentLocation: CabinInfotainmentNavigationCurrentLocation? = nil
 
     public var destinationSet: CabinInfotainmentNavigationDestinationSet? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [:]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [
+            "currentLocation" : CabinInfotainmentNavigationCurrentLocation.self,
+            "destinationSet" : CabinInfotainmentNavigationDestinationSet.self
+        ]
+    }
 }

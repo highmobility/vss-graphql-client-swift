@@ -13,4 +13,17 @@ public struct CabinLightsRow3Left: GraphQLObjectType {
 
     /// Is passenger light on
     public var isPassengerOn: Bool? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "isPassengerOn" : Bool.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }

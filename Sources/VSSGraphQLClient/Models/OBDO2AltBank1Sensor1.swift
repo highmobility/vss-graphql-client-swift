@@ -13,4 +13,17 @@ public struct OBDO2AltBank1Sensor1: GraphQLObjectType {
 
     /// Dummy description
     public var dummyField: String? = nil
+
+
+    // MARK: GraphQLObjectType
+    
+    public static var scalars: [String : Any] {
+        [
+            "dummyField" : String.self
+        ]
+    }
+    
+    public static var objects: [String : GraphQLObjectType.Type] {
+        [:]
+    }
 }
